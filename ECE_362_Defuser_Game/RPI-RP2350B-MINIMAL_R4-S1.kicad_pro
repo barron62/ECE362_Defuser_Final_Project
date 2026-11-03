@@ -913,13 +913,17 @@
         "uuid": "94683f5c-9cd9-448e-be96-9792537b5cb8"
       }
     ],
-    "used_designators": "C10,PCB1,SBREV1,VARIANT1",
+    "used_designators": "#PWR45-51,D2-4,R5,SW3-31,U5-7",
     "variants": []
   },
   "sheets": [
     [
       "94683f5c-9cd9-448e-be96-9792537b5cb8",
       "RPI-RP2350B-MINIMAL_R4-S1"
+    ],
+    [
+      "62c36649-eabe-4136-ad52-363774613516",
+      "Puzzles"
     ]
   ],
   "text_variables": {},

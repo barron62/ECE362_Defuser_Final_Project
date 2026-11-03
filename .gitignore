@@ -1,0 +1,88 @@
+# KiCad .gitignore
+
+# --- Backups and autosaves ---
+*-backups/
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_prl-bak
+*-bak
+*.bak
+*.000
+*.001
+*.002
+*.003
+*.004
+*.005
+*.006
+*.007
+*.008
+*.009
+*~
+_autosave-*
+*.tmp
+*-save.pro
+*-save.kicad_pcb
+fp-info-cache
+
+# --- Local project settings (per-user window/layout state) ---
+*.kicad_prl
+*.kicad_pro-bak
+
+# --- Netlists and intermediate files ---
+*.net
+*.xml
+*-cache.lib
+*-rescue.lib
+*-rescue.dcm
+*.sch-bak
+*.pro-bak
+
+# --- Generated outputs (uncomment/adjust to taste) ---
+# Fabrication outputs are often committed as release artifacts instead.
+# gerber/
+# gerbers/
+# fabrication/
+# production/
+# *.gbr
+# *.drl
+# *.gbrjob
+# *.pos
+# *.zip
+
+# BOM / report outputs
+*-bom.csv
+*.rpt
+*.erc
+*.drc
+
+# --- 3D / render outputs ---
+*.step.bak
+*.wrl.bak
+*.png.bak
+
+# --- Simulation (ngspice) ---
+*.raw
+*.log
+*.cir.out
+
+# --- Archived libraries (project-specific libs you don't want to track) ---
+# *.kicad_sym-bak
+# *.kicad_mod-bak
+*.lck
+*.lock
+~*.lck
+
+# --- Python scripting / plugin dev ---
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- OS / editor junk ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*.swo

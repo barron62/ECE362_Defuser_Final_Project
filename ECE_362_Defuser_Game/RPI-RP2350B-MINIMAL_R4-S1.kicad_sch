@@ -7,9 +7,9 @@
 	(title_block
 		(title "RP2350B QFN80 Minimal Design Example")
 		(date "2026-07-03")
-		(rev "S1")
+		(rev "A")
 		(comment 1 "RPI-2350B-MINIMAL_R4")
-		(comment 2 "Mike Stimson")
+		(comment 2 "Mike Stimson | Ryan Barron")
 	)
 	(lib_symbols
 		(symbol "RPI - BOM Directives:PCB_PWB_REV"

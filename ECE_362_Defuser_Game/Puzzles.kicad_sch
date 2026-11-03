@@ -4,6 +4,12 @@
 	(generator_version "10.0")
 	(uuid "87a6a28a-e1da-4a6e-86c3-6ab0bbfbc5bf")
 	(paper "A4")
+	(title_block
+		(title "Debugger Game Puzzles")
+		(date "2026-11-03")
+		(rev "A")
+		(comment 2 "Ryan Barron")
+	)
 	(lib_symbols
 		(symbol "74xx:74HC238"
 			(exclude_from_sim no)
@@ -3027,6 +3033,18 @@
 		)
 	)
 	(rectangle
+		(start 154.94 135.89)
+		(end 193.675 165.1)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "47c2e434-0fb3-4994-bd80-ff7fd9c4384c")
+	)
+	(rectangle
 		(start 22.86 54.61)
 		(end 113.03 132.715)
 		(stroke
@@ -3073,6 +3091,16 @@
 			(type none)
 		)
 		(uuid "93482f55-9d2f-468e-ac70-a997a9fab9dc")
+	)
+	(text "Directional Arrows"
+		(exclude_from_sim no)
+		(at 169.418 135.128 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1021829e-7499-4e7c-b1fa-bd36e0977db1")
 	)
 	(text "PIO RGB Lights"
 		(exclude_from_sim no)

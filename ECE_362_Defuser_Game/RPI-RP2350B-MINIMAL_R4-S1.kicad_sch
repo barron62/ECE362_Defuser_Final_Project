@@ -12,7 +12,7 @@
 		(comment 2 "Mike Stimson | Ryan Barron")
 	)
 	(lib_symbols
-		(symbol "Connector:USB_C_Plug_USB2.0"
+		(symbol "Connector:USB_C_Receptacle_USB2.0_14P"
 			(pin_names
 				(offset 1.016)
 			)
@@ -21,26 +21,24 @@
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "P"
-				(at -10.16 19.05 0)
+			(property "Reference" "J"
+				(at 0 22.225 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify left)
 				)
 			)
-			(property "Value" "USB_C_Plug_USB2.0"
-				(at 12.7 19.05 0)
+			(property "Value" "USB_C_Receptacle_USB2.0_14P"
+				(at 0 19.685 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
-					(justify right)
 				)
 			)
 			(property "Footprint" ""
@@ -65,7 +63,7 @@
 					)
 				)
 			)
-			(property "Description" "USB 2.0-only Type-C Plug connector"
+			(property "Description" "USB 2.0-only 14P Type-C Receptacle connector"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -87,7 +85,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "USB*C*Plug*"
+			(property "ki_fp_filters" "USB*C*Receptacle*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -98,7 +96,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Plug_USB2.0_0_0"
+			(symbol "USB_C_Receptacle_USB2.0_14P_0_0"
 				(rectangle
 					(start -0.254 -17.78)
 					(end 0.254 -16.764)
@@ -155,6 +153,17 @@
 					)
 				)
 				(rectangle
+					(start 10.16 0.254)
+					(end 9.144 -0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
 					(start 10.16 -2.286)
 					(end 9.144 -2.794)
 					(stroke
@@ -165,8 +174,19 @@
 						(type none)
 					)
 				)
+				(rectangle
+					(start 10.16 -4.826)
+					(end 9.144 -5.334)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 			)
-			(symbol "USB_C_Plug_USB2.0_0_1"
+			(symbol "USB_C_Receptacle_USB2.0_14P_0_1"
 				(rectangle
 					(start -10.16 17.78)
 					(end 10.16 -17.78)
@@ -367,7 +387,7 @@
 					)
 				)
 			)
-			(symbol "USB_C_Plug_USB2.0_1_1"
+			(symbol "USB_C_Receptacle_USB2.0_14P_1_1"
 				(pin passive line
 					(at 0 -22.86 90)
 					(length 5.08)
@@ -407,7 +427,7 @@
 				(pin bidirectional line
 					(at 15.24 10.16 180)
 					(length 5.08)
-					(name "CC"
+					(name "CC1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -537,7 +557,7 @@
 				(pin bidirectional line
 					(at 15.24 7.62 180)
 					(length 5.08)
-					(name "VCONN"
+					(name "CC2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -545,6 +565,42 @@
 						)
 					)
 					(number "B5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 15.24 -5.08 180)
+					(length 5.08)
+					(name "D+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 15.24 0 180)
+					(length 5.08)
+					(name "D-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "B7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -9023,7 +9079,7 @@
 	)
 	(text "Power"
 		(exclude_from_sim no)
-		(at 55.88 34.29 0)
+		(at 55.88 25.4 0)
 		(effects
 			(font
 				(size 2.54 2.54)
@@ -9063,7 +9119,7 @@
 		(uuid "16c71cd7-d66d-43be-ab55-fc3f39b7a426")
 	)
 	(junction
-		(at 64.77 40.64)
+		(at 64.77 31.75)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "26236ef1-4184-40f9-8a77-d3419377e2e3")
@@ -9135,7 +9191,7 @@
 		(uuid "59814a02-4c8b-42e6-8e1a-36317e601db0")
 	)
 	(junction
-		(at 57.15 40.64)
+		(at 57.15 31.75)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5a14e048-865c-4d53-aee0-ade95a18d8a5")
@@ -9183,7 +9239,7 @@
 		(uuid "764ef9fe-2a65-45d1-8f38-68da45b9700f")
 	)
 	(junction
-		(at 92.71 40.64)
+		(at 92.71 31.75)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "7b52ef91-3441-426d-a5ef-8473f01b6bcb")
@@ -9249,7 +9305,7 @@
 		(uuid "a78668c1-26dc-4769-91b9-08c9d27cf096")
 	)
 	(junction
-		(at 45.72 40.64)
+		(at 45.72 31.75)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ad28e3e4-fbe3-4294-8227-ec50127be761")
@@ -9261,19 +9317,19 @@
 		(uuid "b4b50e37-c087-49b2-867b-fe99e053eeef")
 	)
 	(junction
-		(at 100.33 40.64)
+		(at 100.33 31.75)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "bebe3d8f-7823-4903-852f-628c1a0e92e7")
 	)
 	(junction
-		(at 19.05 80.01)
+		(at 19.05 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c8356da2-dc6e-41a1-9b72-3a9bc6225416")
 	)
 	(junction
-		(at 22.86 80.01)
+		(at 22.86 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "c8cff843-856a-4311-ada7-cf2688e63282")
@@ -9315,7 +9371,7 @@
 		(uuid "d7843d9c-ef68-42ba-9a68-439f2e5bad9e")
 	)
 	(junction
-		(at 26.67 80.01)
+		(at 26.67 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d7e6492d-3656-4d3d-a97b-d734a76dc382")
@@ -9389,10 +9445,6 @@
 	(no_connect
 		(at 219.71 199.39)
 		(uuid "4fe56ec3-de27-4964-a48e-fc0833e03bfb")
-	)
-	(no_connect
-		(at 41.91 48.26)
-		(uuid "50cdcd6d-121b-4e55-b693-9e64d267ee90")
 	)
 	(no_connect
 		(at 254 140.97)
@@ -9538,7 +9590,7 @@
 	)
 	(wire
 		(pts
-			(xy 26.67 80.01) (xy 22.86 80.01)
+			(xy 26.67 71.12) (xy 22.86 71.12)
 		)
 		(stroke
 			(width 0)
@@ -9548,7 +9600,7 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 41.91) (xy 92.71 41.91)
+			(xy 91.44 33.02) (xy 92.71 33.02)
 		)
 		(stroke
 			(width 0)
@@ -9718,7 +9770,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 40.64) (xy 100.33 39.37)
+			(xy 100.33 31.75) (xy 100.33 30.48)
 		)
 		(stroke
 			(width 0)
@@ -9738,7 +9790,7 @@
 	)
 	(wire
 		(pts
-			(xy 26.67 78.74) (xy 26.67 80.01)
+			(xy 26.67 69.85) (xy 26.67 71.12)
 		)
 		(stroke
 			(width 0)
@@ -9768,7 +9820,7 @@
 	)
 	(wire
 		(pts
-			(xy 19.05 80.01) (xy 19.05 78.74)
+			(xy 19.05 71.12) (xy 19.05 69.85)
 		)
 		(stroke
 			(width 0)
@@ -9788,7 +9840,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 50.8) (xy 100.33 53.34)
+			(xy 100.33 41.91) (xy 100.33 44.45)
 		)
 		(stroke
 			(width 0)
@@ -10058,7 +10110,7 @@
 	)
 	(wire
 		(pts
-			(xy 82.55 46.99) (xy 82.55 49.53)
+			(xy 82.55 38.1) (xy 82.55 40.64)
 		)
 		(stroke
 			(width 0)
@@ -10078,7 +10130,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 53.34) (xy 48.26 53.34)
+			(xy 41.91 44.45) (xy 48.26 44.45)
 		)
 		(stroke
 			(width 0)
@@ -10158,7 +10210,7 @@
 	)
 	(wire
 		(pts
-			(xy 22.86 80.01) (xy 19.05 80.01)
+			(xy 22.86 71.12) (xy 19.05 71.12)
 		)
 		(stroke
 			(width 0)
@@ -10238,7 +10290,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 40.64) (xy 64.77 45.72)
+			(xy 64.77 31.75) (xy 64.77 36.83)
 		)
 		(stroke
 			(width 0)
@@ -10378,7 +10430,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 39.37) (xy 91.44 39.37)
+			(xy 92.71 30.48) (xy 91.44 30.48)
 		)
 		(stroke
 			(width 0)
@@ -10408,7 +10460,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 40.64) (xy 92.71 39.37)
+			(xy 92.71 31.75) (xy 92.71 30.48)
 		)
 		(stroke
 			(width 0)
@@ -10528,7 +10580,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 40.64) (xy 57.15 40.64)
+			(xy 45.72 31.75) (xy 57.15 31.75)
 		)
 		(stroke
 			(width 0)
@@ -10648,7 +10700,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 40.64) (xy 45.72 40.64)
+			(xy 41.91 31.75) (xy 45.72 31.75)
 		)
 		(stroke
 			(width 0)
@@ -10708,7 +10760,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 58.42) (xy 48.26 58.42)
+			(xy 41.91 49.53) (xy 48.26 49.53)
 		)
 		(stroke
 			(width 0)
@@ -10718,7 +10770,7 @@
 	)
 	(wire
 		(pts
-			(xy 64.77 50.8) (xy 64.77 53.34)
+			(xy 64.77 41.91) (xy 64.77 44.45)
 		)
 		(stroke
 			(width 0)
@@ -10818,7 +10870,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 41.91) (xy 92.71 40.64)
+			(xy 92.71 33.02) (xy 92.71 31.75)
 		)
 		(stroke
 			(width 0)
@@ -10918,7 +10970,7 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 40.64) (xy 100.33 45.72)
+			(xy 100.33 31.75) (xy 100.33 36.83)
 		)
 		(stroke
 			(width 0)
@@ -10975,6 +11027,16 @@
 			(type default)
 		)
 		(uuid "8ab67559-8962-427e-87c8-28326a53dc06")
+	)
+	(wire
+		(pts
+			(xy 41.91 46.99) (xy 48.26 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8c392801-1f9e-4a14-a084-96a050f9149a")
 	)
 	(wire
 		(pts
@@ -11188,7 +11250,7 @@
 	)
 	(wire
 		(pts
-			(xy 92.71 40.64) (xy 100.33 40.64)
+			(xy 92.71 31.75) (xy 100.33 31.75)
 		)
 		(stroke
 			(width 0)
@@ -11248,7 +11310,7 @@
 	)
 	(wire
 		(pts
-			(xy 57.15 40.64) (xy 64.77 40.64)
+			(xy 57.15 31.75) (xy 64.77 31.75)
 		)
 		(stroke
 			(width 0)
@@ -11278,7 +11340,7 @@
 	)
 	(wire
 		(pts
-			(xy 22.86 80.01) (xy 22.86 81.28)
+			(xy 22.86 71.12) (xy 22.86 72.39)
 		)
 		(stroke
 			(width 0)
@@ -11558,6 +11620,16 @@
 	)
 	(wire
 		(pts
+			(xy 41.91 52.07) (xy 48.26 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c6121a35-a042-44b3-8718-2966f81105ed")
+	)
+	(wire
+		(pts
 			(xy 259.08 35.56) (xy 259.08 40.64)
 		)
 		(stroke
@@ -11778,7 +11850,7 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 45.72) (xy 57.15 45.72)
+			(xy 41.91 36.83) (xy 59.69 36.83)
 		)
 		(stroke
 			(width 0)
@@ -11878,7 +11950,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 40.64) (xy 64.77 40.64)
+			(xy 73.66 31.75) (xy 64.77 31.75)
 		)
 		(stroke
 			(width 0)
@@ -12108,6 +12180,16 @@
 	)
 	(wire
 		(pts
+			(xy 41.91 39.37) (xy 55.88 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcb5015b-7bd4-40a9-9430-d1da64bc2abf")
+	)
+	(wire
+		(pts
 			(xy 142.24 232.41) (xy 151.13 232.41)
 		)
 		(stroke
@@ -12207,7 +12289,7 @@
 		(uuid "09a9aaa1-f072-42de-97ae-5a74a61bd1fb")
 	)
 	(label "USB_D-"
-		(at 48.26 53.34 180)
+		(at 48.26 44.45 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12266,6 +12348,16 @@
 		)
 		(uuid "1c9b5482-d404-4a01-92d8-8649059c3511")
 	)
+	(label "USB_D-"
+		(at 48.26 46.99 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1ed12809-45f4-4d29-9659-2b4b2c73eb37")
+	)
 	(label "FLASH2_SS"
 		(at 48.26 195.58 0)
 		(effects
@@ -12285,6 +12377,16 @@
 			(justify left bottom)
 		)
 		(uuid "256de242-ac5d-4941-8108-a515a02da649")
+	)
+	(label "CC1"
+		(at 46.99 36.83 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "28dbc843-6642-4ec5-915e-2ef81eaaa980")
 	)
 	(label "QSPI_SCLK"
 		(at 41.91 106.68 0)
@@ -12465,6 +12567,16 @@
 			(justify right bottom)
 		)
 		(uuid "5782f710-bbef-48b0-8749-e8c34e6d2493")
+	)
+	(label "CC2"
+		(at 46.99 39.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5833dc0e-489e-42a9-aff0-213d0c516ac9")
 	)
 	(label "FLASH_SS"
 		(at 41.91 104.14 0)
@@ -12647,7 +12759,7 @@
 		(uuid "8f235f7a-7811-4205-a1e0-689ed95e03fa")
 	)
 	(label "USB_D+"
-		(at 48.26 58.42 180)
+		(at 48.26 49.53 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -12675,6 +12787,16 @@
 			(justify left bottom)
 		)
 		(uuid "924ad937-68ff-4ec7-8565-22fa0d398e32")
+	)
+	(label "USB_D+"
+		(at 48.26 52.07 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "925a3198-4f94-4af8-99d0-f11747940a80")
 	)
 	(label "GPIO6"
 		(at 142.24 125.73 0)
@@ -17431,7 +17553,7 @@
 	)
 	(symbol
 		(lib_id "RPI_DB:Integrated_Circuits | Power | LDO/RP-01JWD9-7JRX6J")
-		(at 82.55 40.64 0)
+		(at 82.55 31.75 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17441,7 +17563,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f04c8b7")
 		(property "Reference" "U2"
-			(at 75.946 46.482 0)
+			(at 75.946 37.592 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17452,7 +17574,7 @@
 			)
 		)
 		(property "Value" "NCP1117ST33T3G"
-			(at 74.168 35.814 0)
+			(at 74.168 26.924 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17463,7 +17585,7 @@
 			)
 		)
 		(property "Footprint" "RPI_COMPILED:onsemi_ncp1117st33t3g"
-			(at 82.55 32.385 0)
+			(at 82.55 23.495 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17474,7 +17596,7 @@
 			)
 		)
 		(property "Datasheet" "file:///C:\\rpi-pdb\\parts\\Integrated_Circuits\\Power\\LDO\\ONSEMI_NCP1117ST33T3G\\datasheets"
-			(at 82.55 38.1 0)
+			(at 82.55 29.21 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17485,7 +17607,7 @@
 			)
 		)
 		(property "Description" "LDO, Vin=4.75-20V, Vout=3.3V, 1A min, SOT-223"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17496,7 +17618,7 @@
 			)
 		)
 		(property "part_uid" "RP-01JWD9-7JRX6J"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17507,7 +17629,7 @@
 			)
 		)
 		(property "manufacturer" "ON Semiconductor"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17518,7 +17640,7 @@
 			)
 		)
 		(property "manufacturer_pn" "NCP1117ST33T3G"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17529,7 +17651,7 @@
 			)
 		)
 		(property "packaging" "Tape & Reel"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17540,7 +17662,7 @@
 			)
 		)
 		(property "packaging_qty" "4000"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17551,7 +17673,7 @@
 			)
 		)
 		(property "voltage" "3.3V"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17562,7 +17684,7 @@
 			)
 		)
 		(property "operating_temp_max" "+125C"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17573,7 +17695,7 @@
 			)
 		)
 		(property "operating_temp_min" "+0C"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17584,7 +17706,7 @@
 			)
 		)
 		(property "z_height_max" "1.8mm"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17595,7 +17717,7 @@
 			)
 		)
 		(property "package" "SOT-223"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17606,7 +17728,7 @@
 			)
 		)
 		(property "size" "6.5x7x1.8mm"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17617,7 +17739,7 @@
 			)
 		)
 		(property "current" "1A"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17628,7 +17750,7 @@
 			)
 		)
 		(property "z_height_nom" "1.8mm"
-			(at 82.55 40.64 0)
+			(at 82.55 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17661,7 +17783,7 @@
 	)
 	(symbol
 		(lib_id "RPI - Power:PWR_NET")
-		(at 100.33 39.37 0)
+		(at 100.33 30.48 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17671,7 +17793,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f077314")
 		(property "Reference" "#PWR10"
-			(at 100.33 43.18 0)
+			(at 100.33 34.29 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17682,7 +17804,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 100.33 35.56 0)
+			(at 100.33 26.67 0)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -17692,7 +17814,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 100.33 39.37 0)
+			(at 100.33 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17703,7 +17825,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.33 39.37 0)
+			(at 100.33 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17714,7 +17836,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 100.33 39.37 0)
+			(at 100.33 30.48 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17738,7 +17860,7 @@
 	)
 	(symbol
 		(lib_id "RPI_DB:Capacitors | MLCC | M2012/RP-01GYSK-AVBE41")
-		(at 64.77 48.26 0)
+		(at 64.77 39.37 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -17748,7 +17870,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f09255d")
 		(property "Reference" "C1"
-			(at 66.802 43.18 0)
+			(at 66.802 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17759,7 +17881,7 @@
 			)
 		)
 		(property "Value" "10u"
-			(at 66.802 45.212 0)
+			(at 66.802 36.322 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17770,7 +17892,7 @@
 			)
 		)
 		(property "Footprint" "RPI_COMPILED:generic_capc2012x125"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17781,7 +17903,7 @@
 			)
 		)
 		(property "Datasheet" "file:///C:\\rpi-pdb\\parts\\Capacitors\\MLCC\\M2012\\MURATA_GRM21BR61C106KE15L\\datasheets"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17792,7 +17914,7 @@
 			)
 		)
 		(property "Description" "Capacitor, MLCC, 10uF, 10%, M2012, 16V, X5R"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17803,7 +17925,7 @@
 			)
 		)
 		(property "package" "M2012"
-			(at 66.802 53.34 0)
+			(at 66.802 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17814,7 +17936,7 @@
 			)
 		)
 		(property "voltage" "16V"
-			(at 66.802 49.276 0)
+			(at 66.802 40.386 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17825,7 +17947,7 @@
 			)
 		)
 		(property "dielectric" "X5R"
-			(at 66.802 51.308 0)
+			(at 66.802 42.418 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17836,7 +17958,7 @@
 			)
 		)
 		(property "tolerance" "10%"
-			(at 66.802 47.244 0)
+			(at 66.802 38.354 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -17847,7 +17969,7 @@
 			)
 		)
 		(property "part_uid" "RP-01GYSK-AVBE41"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17858,7 +17980,7 @@
 			)
 		)
 		(property "manufacturer" "Murata"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17869,7 +17991,7 @@
 			)
 		)
 		(property "manufacturer_pn" "GRM21BR61C106KE15L"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17880,7 +18002,7 @@
 			)
 		)
 		(property "packaging" "180mm embossed taping"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17891,7 +18013,7 @@
 			)
 		)
 		(property "packaging_qty" "3000"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17902,7 +18024,7 @@
 			)
 		)
 		(property "temp_coefficient" "X5R"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17913,7 +18035,7 @@
 			)
 		)
 		(property "operating_temp_max" "+85C"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17924,7 +18046,7 @@
 			)
 		)
 		(property "operating_temp_min" "-55C"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17935,7 +18057,7 @@
 			)
 		)
 		(property "z_height_max" ""
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17946,7 +18068,7 @@
 			)
 		)
 		(property "material" "Ceramic"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17957,7 +18079,7 @@
 			)
 		)
 		(property "size" "2.0x1.25x1.25mm"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17968,7 +18090,7 @@
 			)
 		)
 		(property "capacitance" "10u"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -17979,7 +18101,7 @@
 			)
 		)
 		(property "z_height_nom" "1.25mm"
-			(at 64.77 48.26 0)
+			(at 64.77 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18006,7 +18128,7 @@
 	)
 	(symbol
 		(lib_id "RPI_DB:Capacitors | MLCC | M2012/RP-01GYSK-AVBE41")
-		(at 100.33 48.26 0)
+		(at 100.33 39.37 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18016,7 +18138,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f0930a1")
 		(property "Reference" "C5"
-			(at 102.362 43.18 0)
+			(at 102.362 34.29 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18027,7 +18149,7 @@
 			)
 		)
 		(property "Value" "10u"
-			(at 102.362 45.212 0)
+			(at 102.362 36.322 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18038,7 +18160,7 @@
 			)
 		)
 		(property "Footprint" "RPI_COMPILED:generic_capc2012x125"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18049,7 +18171,7 @@
 			)
 		)
 		(property "Datasheet" "file:///C:\\rpi-pdb\\parts\\Capacitors\\MLCC\\M2012\\MURATA_GRM21BR61C106KE15L\\datasheets"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18060,7 +18182,7 @@
 			)
 		)
 		(property "Description" "Capacitor, MLCC, 10uF, 10%, M2012, 16V, X5R"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18071,7 +18193,7 @@
 			)
 		)
 		(property "package" "M2012"
-			(at 102.362 53.34 0)
+			(at 102.362 44.45 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18082,7 +18204,7 @@
 			)
 		)
 		(property "voltage" "16V"
-			(at 102.362 49.276 0)
+			(at 102.362 40.386 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18093,7 +18215,7 @@
 			)
 		)
 		(property "dielectric" "X5R"
-			(at 102.362 51.308 0)
+			(at 102.362 42.418 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18104,7 +18226,7 @@
 			)
 		)
 		(property "tolerance" "10%"
-			(at 102.362 47.244 0)
+			(at 102.362 38.354 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -18115,7 +18237,7 @@
 			)
 		)
 		(property "part_uid" "RP-01GYSK-AVBE41"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18126,7 +18248,7 @@
 			)
 		)
 		(property "manufacturer" "Murata"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18137,7 +18259,7 @@
 			)
 		)
 		(property "manufacturer_pn" "GRM21BR61C106KE15L"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18148,7 +18270,7 @@
 			)
 		)
 		(property "packaging" "180mm embossed taping"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18159,7 +18281,7 @@
 			)
 		)
 		(property "packaging_qty" "3000"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18170,7 +18292,7 @@
 			)
 		)
 		(property "temp_coefficient" "X5R"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18181,7 +18303,7 @@
 			)
 		)
 		(property "operating_temp_max" "+85C"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18192,7 +18314,7 @@
 			)
 		)
 		(property "operating_temp_min" "-55C"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18203,7 +18325,7 @@
 			)
 		)
 		(property "z_height_max" ""
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18214,7 +18336,7 @@
 			)
 		)
 		(property "material" "Ceramic"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18225,7 +18347,7 @@
 			)
 		)
 		(property "size" "2.0x1.25x1.25mm"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18236,7 +18358,7 @@
 			)
 		)
 		(property "capacitance" "10u"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18247,7 +18369,7 @@
 			)
 		)
 		(property "z_height_nom" "1.25mm"
-			(at 100.33 48.26 0)
+			(at 100.33 39.37 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18274,7 +18396,7 @@
 	)
 	(symbol
 		(lib_id "RPI - Power:GND")
-		(at 64.77 53.34 0)
+		(at 64.77 44.45 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18284,7 +18406,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f093d45")
 		(property "Reference" "#PWR3"
-			(at 64.77 59.69 0)
+			(at 64.77 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18295,7 +18417,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 64.77 57.277 0)
+			(at 64.77 48.387 0)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -18305,7 +18427,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 64.77 53.34 0)
+			(at 64.77 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18316,7 +18438,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 64.77 53.34 0)
+			(at 64.77 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18327,7 +18449,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 64.77 53.34 0)
+			(at 64.77 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18351,7 +18473,7 @@
 	)
 	(symbol
 		(lib_id "RPI - Power:GND")
-		(at 100.33 53.34 0)
+		(at 100.33 44.45 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -18361,7 +18483,7 @@
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-00005f0a1049")
 		(property "Reference" "#PWR11"
-			(at 100.33 59.69 0)
+			(at 100.33 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18372,7 +18494,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 100.33 57.277 0)
+			(at 100.33 48.387 0)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -18382,7 +18504,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 100.33 53.34 0)
+			(at 100.33 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18393,7 +18515,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 100.33 53.34 0)
+			(at 100.33 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18404,7 +18526,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 100.33 53.34 0)
+			(at 100.33 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19642,6 +19764,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_US")
+		(at 55.88 43.18 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "14994f08-2641-4d92-9df2-5394be7b9e1e")
+		(property "Reference" "R14"
+			(at 53.848 42.164 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "5.1K"
+			(at 53.594 46.482 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
+			(at 56.896 43.434 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 55.88 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor, US symbol"
+			(at 55.88 43.18 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e23b3f05-72db-4a2c-a05b-0e35842f7ec1")
+		)
+		(pin "2"
+			(uuid "78a5ef32-9410-43dd-b724-b8345d5ae243")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
+					(reference "R14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "RPI - Power:GND")
 		(at 289.56 156.21 0)
 		(unit 1)
@@ -19713,120 +19914,6 @@
 			(project "RPI-RP2350B-MINIMAL_R4-S1"
 				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
 					(reference "#PWR024")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Connector:USB_C_Plug_USB2.0")
-		(at 26.67 55.88 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "1992a615-2df6-4269-a097-508f7b6e2e61")
-		(property "Reference" "P1"
-			(at 16.51 36.83 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "USB_C_Plug_USB2.0"
-			(at 39.37 36.83 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" "Connector_USB:USB_C_Plug_JAE_DX07P024AJ1"
-			(at 30.48 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
-			(at 30.48 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "USB 2.0-only Type-C Plug connector"
-			(at 26.67 55.88 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "B9"
-			(uuid "ab2efc70-f832-458f-baf2-4251f73b0c6a")
-		)
-		(pin "A1"
-			(uuid "7a72fc6e-d2b4-440a-b994-af3a637949ca")
-		)
-		(pin "A9"
-			(uuid "289bd4c8-4a3f-403f-bc3c-1c9da8351014")
-		)
-		(pin "A12"
-			(uuid "606716fa-9011-4d8c-a295-c769b148e826")
-		)
-		(pin "B4"
-			(uuid "95265248-e006-440a-b0cb-5e8b75c542c6")
-		)
-		(pin "B12"
-			(uuid "f816a84b-7624-41d8-8bcd-3fc2df3e0154")
-		)
-		(pin "SH"
-			(uuid "fe7eb850-82ea-4255-b3f6-b0d801659968")
-		)
-		(pin "B5"
-			(uuid "8184680b-58d8-403a-9b2a-af52b0019723")
-		)
-		(pin "B1"
-			(uuid "14c0410e-7c56-4aaa-ac25-b962589d9b2f")
-		)
-		(pin "A6"
-			(uuid "3b842f71-36b2-4eaf-b24b-ae75016ec547")
-		)
-		(pin "A5"
-			(uuid "6eac46df-f3a9-4085-8a8f-223dbb7d44e9")
-		)
-		(pin "A4"
-			(uuid "88128877-a6a0-4667-8d1a-b9993c1445c6")
-		)
-		(pin "A7"
-			(uuid "63b603a7-9f51-4a70-83cc-f3689cf173f3")
-		)
-		(instances
-			(project "RPI-RP2350B-MINIMAL_R4-S1"
-				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
-					(reference "P1")
 					(unit 1)
 				)
 			)
@@ -21221,7 +21308,7 @@
 	)
 	(symbol
 		(lib_id "RPI - Power:GND")
-		(at 82.55 49.53 0)
+		(at 82.55 40.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -21231,7 +21318,7 @@
 		(dnp no)
 		(uuid "368f9a1c-51de-4534-853c-277e3e19f5c5")
 		(property "Reference" "#PWR01"
-			(at 82.55 55.88 0)
+			(at 82.55 46.99 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21242,7 +21329,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 82.55 53.467 0)
+			(at 82.55 44.577 0)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -21252,7 +21339,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 82.55 49.53 0)
+			(at 82.55 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21263,7 +21350,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 82.55 49.53 0)
+			(at 82.55 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21274,7 +21361,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 82.55 49.53 0)
+			(at 82.55 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21577,7 +21664,7 @@
 	)
 	(symbol
 		(lib_id "Device:R_US")
-		(at 57.15 49.53 0)
+		(at 59.69 40.64 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -21587,7 +21674,7 @@
 		(dnp no)
 		(uuid "3e2841b9-3a4e-4e15-8ad6-47bdfcc7a7db")
 		(property "Reference" "R12"
-			(at 59.69 49.53 90)
+			(at 62.23 40.64 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -21596,8 +21683,8 @@
 				)
 			)
 		)
-		(property "Value" "R_US"
-			(at 54.61 49.53 90)
+		(property "Value" "5.1K"
+			(at 62.23 44.958 90)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -21607,7 +21694,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
-			(at 58.166 49.784 90)
+			(at 60.706 40.894 90)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21618,7 +21705,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.15 49.53 0)
+			(at 59.69 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -21629,7 +21716,7 @@
 			)
 		)
 		(property "Description" "Resistor, US symbol"
-			(at 57.15 49.53 0)
+			(at 59.69 40.64 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23002,7 +23089,7 @@
 	)
 	(symbol
 		(lib_id "RPI - Power:GND")
-		(at 19.05 80.01 0)
+		(at 19.05 71.12 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -23012,7 +23099,7 @@
 		(dnp no)
 		(uuid "59950808-258e-41e7-a03b-f6e91db3b40c")
 		(property "Reference" "#PWR02"
-			(at 19.05 86.36 0)
+			(at 19.05 77.47 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23023,7 +23110,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 19.05 83.947 0)
+			(at 19.05 75.057 0)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -23033,7 +23120,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 19.05 80.01 0)
+			(at 19.05 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23044,7 +23131,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 19.05 80.01 0)
+			(at 19.05 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -23055,7 +23142,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 19.05 80.01 0)
+			(at 19.05 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25663,7 +25750,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 22.86 81.28 0)
+		(at 22.86 72.39 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -25673,7 +25760,7 @@
 		(dnp no)
 		(uuid "aa39dc92-c236-4a60-a5fd-8d0091eff8f2")
 		(property "Reference" "#PWR068"
-			(at 22.86 87.63 0)
+			(at 22.86 78.74 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25684,7 +25771,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 22.86 85.09 0)
+			(at 22.86 76.2 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25694,7 +25781,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 22.86 81.28 0)
+			(at 22.86 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25705,7 +25792,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 22.86 81.28 0)
+			(at 22.86 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25716,7 +25803,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 22.86 81.28 0)
+			(at 22.86 72.39 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25740,7 +25827,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 57.15 53.34 0)
+		(at 59.69 44.45 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -25750,7 +25837,7 @@
 		(dnp no)
 		(uuid "acf9aea9-1612-4348-bc0c-ff723068f486")
 		(property "Reference" "#PWR070"
-			(at 57.15 59.69 0)
+			(at 59.69 50.8 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25761,7 +25848,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 57.15 57.15 0)
+			(at 59.69 48.26 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -25771,7 +25858,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 57.15 53.34 0)
+			(at 59.69 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25782,7 +25869,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.15 53.34 0)
+			(at 59.69 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -25793,7 +25880,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 57.15 53.34 0)
+			(at 59.69 44.45 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26081,7 +26168,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 26.67 80.01 270)
+		(at 26.67 71.12 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -26091,7 +26178,7 @@
 		(dnp no)
 		(uuid "bc6d064b-11a8-4ee2-b443-ab8aa13a6b71")
 		(property "Reference" "#FLG02"
-			(at 28.575 80.01 0)
+			(at 28.575 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26102,7 +26189,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 30.48 80.01 0)
+			(at 30.734 71.628 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -26112,7 +26199,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 26.67 80.01 0)
+			(at 26.67 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26123,7 +26210,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 26.67 80.01 0)
+			(at 26.67 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -26134,7 +26221,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 26.67 80.01 0)
+			(at 26.67 71.12 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27154,7 +27241,7 @@
 	)
 	(symbol
 		(lib_id "RPI - Power:PWR_NET")
-		(at 45.72 40.64 0)
+		(at 45.72 31.75 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -27164,7 +27251,7 @@
 		(dnp no)
 		(uuid "cac95f85-344e-4591-8184-d351890820c6")
 		(property "Reference" "#PWR069"
-			(at 45.72 44.45 0)
+			(at 45.72 35.56 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27175,7 +27262,7 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 45.72 36.83 0)
+			(at 45.72 27.94 0)
 			(show_name no)
 			(do_not_autoplace yes)
 			(effects
@@ -27185,7 +27272,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 45.72 40.64 0)
+			(at 45.72 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27196,7 +27283,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 45.72 40.64 0)
+			(at 45.72 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -27207,7 +27294,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 45.72 40.64 0)
+			(at 45.72 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28393,7 +28480,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 57.15 40.64 0)
+		(at 57.15 31.75 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -28403,7 +28490,7 @@
 		(dnp no)
 		(uuid "e04603b4-f5fa-4c56-88ef-d24557b054f8")
 		(property "Reference" "#FLG01"
-			(at 57.15 38.735 0)
+			(at 57.15 29.845 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28414,7 +28501,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 57.15 36.83 0)
+			(at 57.15 27.94 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -28424,7 +28511,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 57.15 40.64 0)
+			(at 57.15 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28435,7 +28522,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 57.15 40.64 0)
+			(at 57.15 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28446,7 +28533,7 @@
 			)
 		)
 		(property "Description" "Special symbol for telling ERC where power comes from"
-			(at 57.15 40.64 0)
+			(at 57.15 31.75 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -28625,6 +28712,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 55.88 46.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f330347c-e107-45c5-9934-b108e863ad72")
+		(property "Reference" "#PWR071"
+			(at 55.88 53.34 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 55.88 50.8 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 55.88 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 55.88 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 55.88 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "adfd79e2-5def-43cc-86e4-c3a6c1011543")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
+					(reference "#PWR071")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "RPI - Power:PWR_NET")
 		(at 134.62 130.81 0)
 		(unit 1)
@@ -28696,6 +28860,124 @@
 			(project "RPI-RP2350B-MINIMAL_R4-S1"
 				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
 					(reference "#PWR036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:USB_C_Receptacle_USB2.0_14P")
+		(at 26.67 46.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f52b56e9-85e9-4dbc-bf27-4ca45e7d76c5")
+		(property "Reference" "J6"
+			(at 26.67 24.765 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "USB_C_Receptacle_USB2.0_14P"
+			(at 26.67 27.305 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_USB:USB_C_Plug_JAE_DX07P024AJ1"
+			(at 30.48 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
+			(at 30.48 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "USB 2.0-only 14P Type-C Receptacle connector"
+			(at 26.67 46.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "A6"
+			(uuid "bbc8dc44-5593-4b15-91ba-18cdb09128be")
+		)
+		(pin "A1"
+			(uuid "b2d4fa96-26f5-474c-8f2f-7daefacfc6b4")
+		)
+		(pin "A9"
+			(uuid "f1af6179-264f-4e80-b52b-24242546c6ab")
+		)
+		(pin "B4"
+			(uuid "1ca4c115-e34a-4af3-ae69-ddb569359585")
+		)
+		(pin "B1"
+			(uuid "40c25685-7355-4d31-8619-e448524c6385")
+		)
+		(pin "B9"
+			(uuid "b45ae776-601f-4e78-8229-d9f9ba7ba784")
+		)
+		(pin "SH"
+			(uuid "27b54cd7-ba29-4178-b041-4269f9b37a39")
+		)
+		(pin "A4"
+			(uuid "fd5c198f-d83d-4be6-959a-e2a130deea67")
+		)
+		(pin "A12"
+			(uuid "4d24f483-4d2a-40e0-96fc-2d31eb92dff5")
+		)
+		(pin "B6"
+			(uuid "3dbda57a-0367-4035-a7b7-6036515a13f0")
+		)
+		(pin "B5"
+			(uuid "13407039-06ca-40f0-b7fe-dfc12d30c081")
+		)
+		(pin "A7"
+			(uuid "569da5a4-e75f-48f9-8676-bccec57d9fa5")
+		)
+		(pin "B12"
+			(uuid "47e8248b-0d69-4500-9895-ea9e0059f888")
+		)
+		(pin "A5"
+			(uuid "9a8bb28a-71d0-42c2-a07a-878a72cced7a")
+		)
+		(pin "B7"
+			(uuid "02a57f70-4428-4d79-866b-fea89fb8d957")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
+					(reference "J6")
 					(unit 1)
 				)
 			)

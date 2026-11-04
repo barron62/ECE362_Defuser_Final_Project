@@ -2010,6 +2010,202 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector:Barrel_Jack"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 5.334 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Barrel_Jack"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 1.27 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 1.27 -1.016 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "DC Barrel Jack"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "DC power barrel jack connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "BarrelJack*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Barrel_Jack_0_1"
+				(rectangle
+					(start -5.08 3.81)
+					(end 5.08 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -2.54) (xy -2.54 -2.54) (xy -1.27 -1.27) (xy 0 -2.54) (xy 2.54 -2.54) (xy 5.08 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.302 1.905)
+					(mid -3.9343 2.54)
+					(end -3.302 3.175)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -3.302 1.905)
+					(mid -3.9343 2.54)
+					(end -3.302 3.175)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(rectangle
+					(start 3.683 3.175)
+					(end -3.302 1.905)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 2.54) (xy 3.81 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Barrel_Jack_1_1"
+				(pin passive line
+					(at 7.62 2.54 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 -2.54 180)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:Conn_01x03_Pin"
 			(pin_names
 				(offset 1.016)
@@ -2222,6 +2418,212 @@
 						)
 					)
 					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Connector:Screw_Terminal_01x02"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Screw_Terminal_01x02"
+				(at 0 -5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "screw terminal"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TerminalBlock*:*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Screw_Terminal_01x02_1_1"
+				(rectangle
+					(start -1.27 1.27)
+					(end 1.27 -3.81)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.5334 0.3302) (xy 0.3302 -0.508)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.5334 -2.2098) (xy 0.3302 -3.048)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.3556 0.508) (xy 0.508 -0.3302)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.3556 -2.032) (xy 0.508 -2.8702)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 0)
+					(radius 0.635)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0 -2.54)
+					(radius 0.635)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4079,6 +4481,18 @@
 		(uuid "47c2e434-0fb3-4994-bd80-ff7fd9c4384c")
 	)
 	(rectangle
+		(start 58.42 170.815)
+		(end 97.79 187.96)
+		(stroke
+			(width 0)
+			(type dash)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "497f5184-0ecb-47d5-bdbf-f31a5dd7c7e3")
+	)
+	(rectangle
 		(start 13.97 49.53)
 		(end 104.14 127.635)
 		(stroke
@@ -4145,6 +4559,16 @@
 			)
 		)
 		(uuid "4e795657-6cf9-47f9-a779-d8e1b3b4c5cc")
+	)
+	(text "LED High Amp Power"
+		(exclude_from_sim no)
+		(at 68.834 169.926 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "79a2b933-7967-4b48-8d16-f4a80659f758")
 	)
 	(text "PIO RGB Lights"
 		(exclude_from_sim no)
@@ -5146,6 +5570,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 180.34) (xy 81.28 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "46df29a2-41ef-4fa9-b38a-beb94aaf5abc")
+	)
+	(wire
+		(pts
 			(xy 157.48 60.96) (xy 157.48 45.72)
 		)
 		(stroke
@@ -5656,6 +6090,16 @@
 	)
 	(wire
 		(pts
+			(xy 78.74 176.53) (xy 78.74 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84313012-7f83-40c0-8ada-0feb4cbe729c")
+	)
+	(wire
+		(pts
 			(xy 200.66 91.44) (xy 200.66 95.25)
 		)
 		(stroke
@@ -5753,6 +6197,16 @@
 			(type default)
 		)
 		(uuid "8e8107a5-1577-43ec-b2fb-4b104a3bfb90")
+	)
+	(wire
+		(pts
+			(xy 78.74 181.61) (xy 78.74 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8eebeccb-bd79-447b-b89c-4d4df7a18ee7")
 	)
 	(wire
 		(pts
@@ -6326,6 +6780,16 @@
 	)
 	(wire
 		(pts
+			(xy 73.66 176.53) (xy 78.74 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c70c26aa-f501-46ee-a414-1d2bf3e3abc4")
+	)
+	(wire
+		(pts
 			(xy 200.66 45.72) (xy 218.44 45.72)
 		)
 		(stroke
@@ -6403,6 +6867,16 @@
 			(type default)
 		)
 		(uuid "d0e0e658-a1eb-40fa-91fa-dd7f0c2ed393")
+	)
+	(wire
+		(pts
+			(xy 78.74 177.8) (xy 81.28 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d23ef02c-7980-4450-8d57-d1ae3c6339f9")
 	)
 	(wire
 		(pts
@@ -6726,6 +7200,16 @@
 	)
 	(wire
 		(pts
+			(xy 73.66 181.61) (xy 78.74 181.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f5f62ca2-7dca-40e4-a30c-e47b18030e09")
+	)
+	(wire
+		(pts
 			(xy 30.48 179.07) (xy 35.56 179.07)
 		)
 		(stroke
@@ -6884,6 +7368,16 @@
 		)
 		(uuid "532e7aab-a7a5-476d-8e52-92026497e9c3")
 	)
+	(label "LED_GND"
+		(at 73.66 181.61 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "6ccf59a2-465d-4b36-a130-c1d77bc5626c")
+	)
 	(label "arrow_row1"
 		(at 161.29 144.78 0)
 		(effects
@@ -6913,6 +7407,16 @@
 			(justify right bottom)
 		)
 		(uuid "7f2f2782-1733-41fb-a6c2-3f8c82f9a5fc")
+	)
+	(label "LED_PWR"
+		(at 73.66 176.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8c793687-6329-45f0-817a-9f08e0fe10d9")
 	)
 	(label "kp_col2"
 		(at 194.31 99.06 270)
@@ -8315,6 +8819,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 223.52 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "9b575dcb-8fcd-46ad-ad88-a9b6c3bf34bf")
 		)
@@ -8385,6 +8900,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 205.74 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 205.74 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -8552,6 +9078,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 240.03 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "aff27a7f-487d-44d7-b591-e90b39076323")
 		)
@@ -8622,6 +9159,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 171.45 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 171.45 153.67 0)
 			(hide yes)
 			(show_name no)
@@ -8712,6 +9260,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 205.74 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c8f22cd0-dc37-4916-85f7-244d71bb947f")
 		)
@@ -8781,6 +9340,17 @@
 			)
 		)
 		(property "Description" "Switch slide, single pole double throw"
+			(at 34.29 88.9 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "JS202011CQN"
 			(at 34.29 88.9 0)
 			(hide yes)
 			(show_name no)
@@ -9030,6 +9600,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 240.03 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ba45cb29-5344-4e80-a5c3-d2b7cacfd972")
 		)
@@ -9100,6 +9681,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 186.69 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 186.69 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -9333,6 +9925,17 @@
 			)
 		)
 		(property "Description" "Switch slide, single pole double throw"
+			(at 34.29 104.14 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "JS202011CQN"
 			(at 34.29 104.14 0)
 			(hide yes)
 			(show_name no)
@@ -10001,6 +10604,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 223.52 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "efaa2e59-ee4a-4f82-8b59-d433a2b60688")
 		)
@@ -10071,6 +10685,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 240.03 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 240.03 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -10403,6 +11028,17 @@
 				)
 			)
 		)
+		(property "MPN" "JS202011CQN"
+			(at 34.29 72.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "7fa17e37-0f71-4c05-a2b6-d8d9a471c9bf")
 		)
@@ -10476,6 +11112,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 189.23 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 189.23 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -10579,6 +11226,96 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Screw_Terminal_01x02")
+		(at 86.36 177.8 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "739a1e3b-bd91-46f5-ab5d-f126ad40e49a")
+		(property "Reference" "J3"
+			(at 86.36 175.26 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Screw_Terminal_01x02"
+			(at 86.36 182.88 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
+			(at 86.36 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Generic screw terminal, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 86.36 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TB002-500-02BE "
+			(at 86.36 177.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0a0ae533-f33a-4785-928a-a3b851906def")
+		)
+		(pin "2"
+			(uuid "8dcc7310-5a66-4f3c-9dfb-7efdc20e64d9")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8/62c36649-eabe-4136-ad52-363774613516"
+					(reference "J3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Switch:SW_Wuerth_450301014042")
 		(at 34.29 120.65 0)
 		(unit 1)
@@ -10632,6 +11369,17 @@
 			)
 		)
 		(property "Description" "Switch slide, single pole double throw"
+			(at 34.29 120.65 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "JS202011CQN"
 			(at 34.29 120.65 0)
 			(hide yes)
 			(show_name no)
@@ -10725,6 +11473,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 205.74 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "c13a330e-6b00-4462-9c37-568d4ef3678e")
 		)
@@ -10795,6 +11554,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 189.23 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 189.23 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -11096,6 +11866,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 173.99 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 173.99 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -11621,6 +12402,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 186.69 153.67 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2618b3e6-3f8f-4846-b970-2f233eba0e47")
 		)
@@ -11691,6 +12483,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 189.23 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 189.23 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -11793,6 +12596,107 @@
 			(project "RPI-RP2350B-MINIMAL_R4-S1"
 				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8/62c36649-eabe-4136-ad52-363774613516"
 					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Barrel_Jack")
+		(at 66.04 179.07 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a2129c21-79ac-4c41-9ba5-9cc0194da979")
+		(property "Reference" "J1"
+			(at 66.04 173.736 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Barrel_Jack"
+			(at 66.04 184.15 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Connector_BarrelJack:BarrelJack_Wuerth_694106106102_2.0x5.5mm"
+			(at 67.31 180.086 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 67.31 180.086 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "DC Barrel Jack"
+			(at 66.04 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "54-00164"
+			(at 66.04 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Field6" ""
+			(at 66.04 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2de18860-3cc2-48c5-8b62-a89df2d7463a")
+		)
+		(pin "2"
+			(uuid "42a1a69f-d993-4ad4-9d63-4c288745e874")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8/62c36649-eabe-4136-ad52-363774613516"
+					(reference "J1")
 					(unit 1)
 				)
 			)
@@ -11940,6 +12844,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 173.99 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7c9e527b-675f-4889-9c81-702dac1f2a8f")
 		)
@@ -12010,6 +12925,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 173.99 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 173.99 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -12221,6 +13147,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 240.03 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "a9b79b3b-c8cf-4b3d-b6b6-5a70c6e67835")
 		)
@@ -12301,6 +13238,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 223.52 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "1e1c65e4-9b03-453a-86ae-2c1a93019820")
 		)
@@ -12371,6 +13319,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 205.74 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 205.74 54.61 0)
 			(hide yes)
 			(show_name no)
@@ -12587,6 +13546,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 189.23 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d28ed8bb-b1a0-434a-a4da-b2a55a0248ce")
 		)
@@ -12657,6 +13627,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 171.45 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 171.45 140.97 0)
 			(hide yes)
 			(show_name no)
@@ -13067,6 +14048,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 223.52 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "51375f91-de55-4b3d-97e9-6e96743f2600")
 		)
@@ -13224,6 +14216,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 173.99 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "453d820b-c2f0-4d5f-91c4-22927b35cade")
 		)
@@ -13294,6 +14297,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 173.99 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 173.99 80.01 0)
 			(hide yes)
 			(show_name no)
@@ -13473,6 +14487,17 @@
 				)
 			)
 		)
+		(property "MPN" "222AMVBAR"
+			(at 205.74 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "ba45cb29-5344-4e80-a5c3-d2b7cacfd975")
 		)
@@ -13543,6 +14568,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 223.52 41.91 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 223.52 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -13777,6 +14813,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 240.03 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 240.03 67.31 0)
 			(hide yes)
 			(show_name no)
@@ -14057,6 +15104,17 @@
 			)
 		)
 		(property "Description" "Push button switch, generic, two pins"
+			(at 189.23 54.61 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "222AMVBAR"
 			(at 189.23 54.61 0)
 			(hide yes)
 			(show_name no)

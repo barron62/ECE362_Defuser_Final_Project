@@ -8795,6 +8795,121 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "power:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy -1.016 1.905) (xy 0 2.54) (xy 1.016 1.905) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(text "Optional Secondary flash or PSRAM (U4), using the second chip select (XIP_SS_N[1]) on GPIO0.\nN.B. Pull-up R13 will be required as GPIOs default to pull-downs at power-up."
 		(exclude_from_sim no)
@@ -9020,6 +9135,12 @@
 		(uuid "59814a02-4c8b-42e6-8e1a-36317e601db0")
 	)
 	(junction
+		(at 57.15 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a14e048-865c-4d53-aee0-ade95a18d8a5")
+	)
+	(junction
 		(at 293.37 40.64)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9146,6 +9267,12 @@
 		(uuid "bebe3d8f-7823-4903-852f-628c1a0e92e7")
 	)
 	(junction
+		(at 19.05 80.01)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c8356da2-dc6e-41a1-9b72-3a9bc6225416")
+	)
+	(junction
 		(at 22.86 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -9186,6 +9313,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d7843d9c-ef68-42ba-9a68-439f2e5bad9e")
+	)
+	(junction
+		(at 26.67 80.01)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d7e6492d-3656-4d3d-a97b-d734a76dc382")
 	)
 	(junction
 		(at 339.09 40.64)
@@ -10285,16 +10418,6 @@
 	)
 	(wire
 		(pts
-			(xy 41.91 40.64) (xy 45.72 40.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "56107fcd-e429-4b6c-a554-365b63a72841")
-	)
-	(wire
-		(pts
 			(xy 59.69 180.34) (xy 59.69 184.15)
 		)
 		(stroke
@@ -10405,7 +10528,7 @@
 	)
 	(wire
 		(pts
-			(xy 45.72 40.64) (xy 64.77 40.64)
+			(xy 45.72 40.64) (xy 57.15 40.64)
 		)
 		(stroke
 			(width 0)
@@ -10522,6 +10645,16 @@
 			(type default)
 		)
 		(uuid "693294e7-bc75-49ea-a420-f35b762458ba")
+	)
+	(wire
+		(pts
+			(xy 41.91 40.64) (xy 45.72 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6a40b370-e990-4a8e-a2bf-7cde16b983f8")
 	)
 	(wire
 		(pts
@@ -11112,6 +11245,16 @@
 			(type default)
 		)
 		(uuid "abc794e8-5936-4cdf-a776-5317fbd6366f")
+	)
+	(wire
+		(pts
+			(xy 57.15 40.64) (xy 64.77 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aca3f44e-d288-4cc4-87de-e9a328667622")
 	)
 	(wire
 		(pts
@@ -21463,7 +21606,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 58.166 49.784 90)
 			(hide yes)
 			(show_name no)
@@ -22852,6 +22995,83 @@
 			(project "RPI-RP2350B-MINIMAL_R4-S1"
 				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
 					(reference "#PWR038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "RPI - Power:GND")
+		(at 19.05 80.01 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "59950808-258e-41e7-a03b-f6e91db3b40c")
+		(property "Reference" "#PWR02"
+			(at 19.05 86.36 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 19.05 83.947 0)
+			(show_name no)
+			(do_not_autoplace yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 19.05 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 19.05 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 19.05 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "02d2c7bf-0ba4-46d7-8ce3-0870b415d52b")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
+					(reference "#PWR02")
 					(unit 1)
 				)
 			)
@@ -25860,6 +26080,83 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 26.67 80.01 270)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bc6d064b-11a8-4ee2-b443-ab8aa13a6b71")
+		(property "Reference" "#FLG02"
+			(at 28.575 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 30.48 80.01 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 26.67 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 26.67 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 26.67 80.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a95aa948-487e-40f6-ac4f-aca4266293bf")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
+					(reference "#FLG02")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "RPI_DB:Resistors | Chip | M1005/RP-019A1P-4Y4V63")
 		(at 31.75 104.14 90)
 		(mirror x)
@@ -28089,6 +28386,83 @@
 			(project "RPI-RP2350B-MINIMAL_R4-S1"
 				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
 					(reference "X1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 57.15 40.64 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e04603b4-f5fa-4c56-88ef-d24557b054f8")
+		(property "Reference" "#FLG01"
+			(at 57.15 38.735 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 57.15 36.83 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 57.15 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 57.15 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Special symbol for telling ERC where power comes from"
+			(at 57.15 40.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "59886b26-4ed4-4334-95a9-1e02c2cf3b73")
+		)
+		(instances
+			(project "RPI-RP2350B-MINIMAL_R4-S1"
+				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8"
+					(reference "#FLG01")
 					(unit 1)
 				)
 			)

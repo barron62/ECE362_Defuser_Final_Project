@@ -8282,7 +8282,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 223.52 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -8362,7 +8362,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 205.74 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -8519,7 +8519,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 240.03 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -8599,7 +8599,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 171.45 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -8679,7 +8679,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 205.74 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -8917,7 +8917,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 39.624 30.734 90)
 			(hide yes)
 			(show_name no)
@@ -8997,7 +8997,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 240.03 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -9077,7 +9077,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 186.69 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -9469,7 +9469,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm"
 			(at 120.65 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -9492,6 +9492,17 @@
 			)
 		)
 		(property "Description" "8-bit Buffer/Line Driver 3-state"
+			(at 120.65 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SN74AHCT244DWR"
 			(at 120.65 172.72 0)
 			(hide yes)
 			(show_name no)
@@ -9957,7 +9968,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 223.52 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -10037,7 +10048,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 240.03 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -10442,7 +10453,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 189.23 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -10681,7 +10692,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 205.74 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -10761,7 +10772,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 189.23 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -10917,7 +10928,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm"
 			(at 130.81 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -10940,6 +10951,17 @@
 			)
 		)
 		(property "Description" "8-bit Buffer/Line Driver 3-state"
+			(at 130.81 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "SN74AHCT244DWR"
 			(at 130.81 121.92 0)
 			(hide yes)
 			(show_name no)
@@ -11051,7 +11073,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 173.99 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -11296,7 +11318,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Potentiometer_THT:Potentiometer_Bourns_PTA2043_Single_Slide"
 			(at 62.23 149.86 0)
 			(hide yes)
 			(show_name no)
@@ -11566,7 +11588,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 186.69 148.59 0)
 			(hide yes)
 			(show_name no)
@@ -11646,7 +11668,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 189.23 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -11725,7 +11747,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical"
 			(at 25.4 181.61 0)
 			(hide yes)
 			(show_name no)
@@ -11885,7 +11907,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 173.99 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -11965,7 +11987,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 173.99 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -12024,7 +12046,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "ad9002a0-d7ca-4734-8e86-f79677b65169")
-		(property "Reference" "Je"
+		(property "Reference" "J2"
 			(at 157.48 172.72 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -12128,7 +12150,7 @@
 		(instances
 			(project "RPI-RP2350B-MINIMAL_R4-S1"
 				(path "/94683f5c-9cd9-448e-be96-9792537b5cb8/62c36649-eabe-4136-ad52-363774613516"
-					(reference "Je")
+					(reference "J2")
 					(unit 1)
 				)
 			)
@@ -12166,7 +12188,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 240.03 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -12246,7 +12268,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 223.52 86.36 0)
 			(hide yes)
 			(show_name no)
@@ -12326,7 +12348,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 205.74 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -12405,7 +12427,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Potentiometer_THT:Potentiometer_Alps_RK09K_Single_Vertical"
 			(at 27.94 151.13 0)
 			(hide yes)
 			(show_name no)
@@ -12471,6 +12493,17 @@
 				)
 			)
 		)
+		(property "MPN" "P120PK-Y25BR10K"
+			(at 27.94 151.13 90)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "3"
 			(uuid "d2804fac-3243-4760-9bd3-aefcae53501e")
 		)
@@ -12521,7 +12554,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 189.23 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -12601,7 +12634,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 171.45 135.89 0)
 			(hide yes)
 			(show_name no)
@@ -13001,7 +13034,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 223.52 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -13158,7 +13191,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 173.99 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -13238,7 +13271,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 173.99 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -13407,7 +13440,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 205.74 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -13487,7 +13520,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 223.52 36.83 0)
 			(hide yes)
 			(show_name no)
@@ -13721,7 +13754,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 240.03 62.23 0)
 			(hide yes)
 			(show_name no)
@@ -14001,7 +14034,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Button_Switch_SMD:SW_SPST_PTS645Sx43SMTR92"
 			(at 189.23 49.53 0)
 			(hide yes)
 			(show_name no)
@@ -14159,7 +14192,7 @@
 				(justify left top)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_SO:TSSOP-16_4.4x5mm_P0.65mm"
 			(at 147.32 71.12 0)
 			(hide yes)
 			(show_name no)

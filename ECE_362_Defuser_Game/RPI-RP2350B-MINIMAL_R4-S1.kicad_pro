@@ -548,7 +548,7 @@
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 2147483647,
         "schematic_color": "rgba(0, 0, 0, 0.000)",
-        "track_width": 0.15,
+        "track_width": 0.4,
         "tuning_profile": "",
         "via_diameter": 0.6,
         "via_drill": 0.35,
@@ -955,7 +955,7 @@
         "uuid": "94683f5c-9cd9-448e-be96-9792537b5cb8"
       }
     ],
-    "used_designators": "",
+    "used_designators": "#PWR72",
     "variants": []
   },
   "sheets": [

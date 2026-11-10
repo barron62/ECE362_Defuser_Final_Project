@@ -15,7 +15,7 @@
  */
 
 #include "pico/stdlib.h"
-#include "led_strip.h"
+#include "led/led_strip.h"
 
 // Temporary GPIO assignment
 // Update after confirming PCB wiring

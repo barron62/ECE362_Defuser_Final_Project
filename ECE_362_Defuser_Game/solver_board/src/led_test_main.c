@@ -1,5 +1,5 @@
 #include "pico/stdlib.h"
-#include "led_strip.h"
+#include "led/led_strip.h"
 
 #define LED_PIN 16  // Temporary pin for testing
 

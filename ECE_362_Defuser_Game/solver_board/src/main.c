@@ -27,13 +27,13 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-
+#include <stdio.h>
 #include "pico/stdlib.h"
 #include "led/led_strip.h"
 #include "uart/uart_solver_v2.h"
 #include "game/game_controller.h"
-#include <stdio.h>
 #include "keypad/keypad.h"
+#include "buttons/buttons.h"
 // Temporary GPIO assignment
 // Update after confirming final PCB wiring
 #define LED_PIN 16
@@ -63,6 +63,9 @@ static void init_hardware(void)
 
     // Initialize 4x4 keypad
     keypad_init();
+
+    // Initialize directional buttons
+    buttons_init();
 }
 
 /*
@@ -129,7 +132,33 @@ int main(void)
             // TODO: Add key to password buffer
         }
 
-        // TODO: Read puzzle button inputs
+        
+        // Read directional button inputs
+        direction_t direction = buttons_get_press();
+
+        switch (direction)
+        {
+            case DIR_UP:
+                printf("Button pressed: UP\n");
+                break;
+
+            case DIR_DOWN:
+                printf("Button pressed: DOWN\n");
+                break;
+
+            case DIR_LEFT:
+                printf("Button pressed: LEFT\n");
+                break;
+
+            case DIR_RIGHT:
+                printf("Button pressed: RIGHT\n");
+                break;
+
+            case DIR_NONE:
+            default:
+                break;
+        }
+
 
         // TODO: Send completed puzzle answers
         // using game_send_answer()

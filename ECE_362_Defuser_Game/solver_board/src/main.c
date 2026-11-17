@@ -32,7 +32,8 @@
 #include "led/led_strip.h"
 #include "uart/uart_solver_v2.h"
 #include "game/game_controller.h"
-
+#include <stdio.h>
+#include "keypad/keypad.h"
 // Temporary GPIO assignment
 // Update after confirming final PCB wiring
 #define LED_PIN 16
@@ -59,6 +60,9 @@ static void init_hardware(void)
 
     // Default LED state
     led_running();
+
+    // Initialize 4x4 keypad
+    keypad_init();
 }
 
 /*
@@ -116,7 +120,14 @@ int main(void)
             game_process_message(message);
         }
 
-        // TODO: Read keypad inputs
+        // Read keypad inputs
+        char key = keypad_get_key();
+
+        if (key != '\0') {
+            printf("Key pressed: %c\n", key);
+
+            // TODO: Add key to password buffer
+        }
 
         // TODO: Read puzzle button inputs
 

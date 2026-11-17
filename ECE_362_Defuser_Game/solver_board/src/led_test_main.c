@@ -47,7 +47,8 @@ int main(void) {
 
         // Final 3 seconds: solid red
         else if (elapsed < 22000) {
-            led_game_over();
+            led_running();     // Reset WIN state for testing
+            led_game_over();   // Display solid red
         }
 
         // Restart the demonstration

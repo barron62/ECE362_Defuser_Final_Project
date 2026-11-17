@@ -34,6 +34,7 @@
 #include "game/game_controller.h"
 #include "keypad/keypad.h"
 #include "buttons/buttons.h"
+#include "password/password_entry.h"
 // Temporary GPIO assignment
 // Update after confirming final PCB wiring
 #define LED_PIN 16
@@ -66,6 +67,9 @@ static void init_hardware(void)
 
     // Initialize directional buttons
     buttons_init();
+
+    // Initialize password entry
+    password_init();
 }
 
 /*
@@ -124,13 +128,25 @@ int main(void)
         }
 
         // Read keypad inputs
+        
         char key = keypad_get_key();
 
         if (key != '\0') {
+
+            // Collect password digits
+            password_process_key(key);
+
             printf("Key pressed: %c\n", key);
 
-            // TODO: Add key to password buffer
+            printf("Password digits entered: %u/%u\n",
+                password_get_length(),
+                PASSWORD_LENGTH);
+
+            if (password_is_ready()) {
+                printf("Password submitted!\n");
+            }
         }
+
 
         
         // Read directional button inputs

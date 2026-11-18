@@ -14,8 +14,8 @@
  * - Run shared three-minute countdown
  * - Process directional maze inputs
  * - Handle victory and game-over conditions
- *
- * Current maze uses a temporary direction sequence.
+ * Maze uses randomized depth-first search generation
+ * and displays player movement on a 64x32 HUB75 LED matrix.
  */
 
 #include <stdint.h>
@@ -30,6 +30,7 @@
 #include "password/password.h"
 #include "maze/maze.h"
 #include "game/game_controller.h"
+#include "led_matrix/hub75.h"
 #define READY_INTERVAL_MS 500
 
 
@@ -79,6 +80,15 @@ int main(void)
     // Generate random password
     password_init();
     maze_init();
+    // Initialize HUB75 LED matrix
+    if (!hub75_init())
+    {
+        // Stop if matrix refresh cannot start
+        while (true)
+        {
+            tight_loop_contents();
+        }
+    }
     game_init();
     // Display password on instructor TFT
     game_screen_password(password_get_code());
@@ -149,6 +159,9 @@ int main(void)
                     
                     if (result == MAZE_COMPLETE)
                     {
+                        // Display final player position
+                        hub75_draw_maze();
+
                         // Maze completed successfully
                         game_win();
                     }
@@ -156,6 +169,11 @@ int main(void)
                     {
                         // Incorrect movement adds a strike
                         game_register_strike();
+                    }
+                    else if (result == MAZE_IN_PROGRESS)
+                    {
+                        // Update player position on LED matrix
+                        hub75_draw_maze();
                     }
 
                 }
@@ -214,6 +232,9 @@ int main(void)
 
                     // Advance to maze
                     game_screen_maze();
+                    
+                    // Display generated maze on LED matrix
+                    hub75_draw_maze();
 
                     // Preserve strikes from password puzzle
                     game_screen_strikes(game_get_strikes());

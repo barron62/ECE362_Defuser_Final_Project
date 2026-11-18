@@ -9,7 +9,7 @@
  *
  * TODO: Integrate instructor-board peripherals
  */
-
+#include <stdio.h>
 #include "pico/stdlib.h"
 
 int main(void) {

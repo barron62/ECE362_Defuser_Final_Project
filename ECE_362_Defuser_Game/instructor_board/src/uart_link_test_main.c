@@ -1,20 +1,25 @@
+
 /*
  * ECE 362 - Defuser Game
- * Instructor-to-Solver UART Integration Test
+ * Instructor Board Password Validation Test
  *
- * Test sequence:
- * 1. Send READY until ACK is received.
- * 2. Send GO to start the game.
- * 3. Send three SUCCESS messages.
- * 4. Stop transmitting test events.
+ * UART1:
+ * TX = GP36
+ * RX = GP37
+ * Baud rate = 115200
  *
- * Expected solver LED behavior:
- * - Solid green at startup
- * - Green puzzle-complete animation
- * - Green puzzle-complete animation
- * - Green victory animation
+ * Protocol:
+ * READY -> ACK -> GO
  *
- * This is a test only, not the final game.
+ * Password packet:
+ * 0xC1, digit0, digit1, digit2, digit3
+ *
+ * Test password: 1234
+ *
+ * Correct: UART_SUCCESS (0xAA)
+ * Incorrect: UART_FAILURE (0x55)
+ *
+ * No automatic puzzle completion.
  */
 
 #include <stdint.h>
@@ -23,83 +28,136 @@
 #include "pico/stdlib.h"
 #include "uart/uart_instructor_v2.h"
 
-#define HANDSHAKE_INTERVAL_MS 500
-#define SUCCESS_INTERVAL_MS   3000
+#define PASSWORD_LENGTH 4
+#define READY_INTERVAL_MS 500
 
-typedef enum {
-    TEST_WAIT_ACK,
-    TEST_RUNNING,
-    TEST_COMPLETE
-} test_state_t;
+static const uint8_t correct_password[PASSWORD_LENGTH] =
+{
+    1, 2, 3, 4
+};
 
+/*
+ * Wait for solver handshake before starting game.
+ */
+static void wait_for_solver(void)
+{
+    bool acknowledged = false;
+
+    while (!acknowledged)
+    {
+        uart_instructor_send(UART_READY);
+
+        for (int i = 0; i < 50; i++)
+        {
+            uint8_t message;
+
+            while (uart_instructor_read(&message))
+            {
+                if (message == UART_ACK)
+                {
+                    acknowledged = true;
+                }
+            }
+
+            if (acknowledged)
+            {
+                break;
+            }
+
+            sleep_ms(READY_INTERVAL_MS / 50);
+        }
+    }
+}
+
+/*
+ * Check whether four received digits are correct.
+ */
+static bool password_matches(const uint8_t *answer)
+{
+    for (uint8_t i = 0; i < PASSWORD_LENGTH; i++)
+    {
+        if (answer[i] != correct_password[i])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/*
+ * Instructor game test.
+ */
 int main(void)
 {
-    stdio_init_all();
     uart_instructor_init();
 
-    test_state_t state = TEST_WAIT_ACK;
+    // Establish connection
+    wait_for_solver();
 
-    uint32_t last_ready = 0;
-    uint32_t last_success = 0;
-    uint8_t success_count = 0;
+    // Start keypad puzzle
+    uart_instructor_send(UART_GO);
 
-    // First handshake request
-    uart_instructor_send(UART_READY);
+    uint8_t received_password[PASSWORD_LENGTH];
+    uint8_t received_count = 0;
 
-    last_ready =
-        to_ms_since_boot(get_absolute_time());
+    bool receiving_password = false;
+    bool keypad_complete = false;
 
     while (true)
     {
-        uint32_t now =
-            to_ms_since_boot(get_absolute_time());
-
         uint8_t message;
 
-        // Read incoming messages
         while (uart_instructor_read(&message))
         {
-            if (state == TEST_WAIT_ACK &&
-                message == UART_ACK)
+            // Ignore additional passwords after
+            // the keypad puzzle is complete.
+            if (keypad_complete)
             {
-                // Solver acknowledged connection
-                uart_instructor_send(UART_GO);
-
-                state = TEST_RUNNING;
-                last_success = now;
+                continue;
             }
-        }
 
-        switch (state)
-        {
-            case TEST_WAIT_ACK:
-                // Retry handshake until connected
-                if ((uint32_t)(now - last_ready) >=
-                    HANDSHAKE_INTERVAL_MS)
+            // Wait for beginning of password packet
+            if (!receiving_password)
+            {
+                if (message == UART_PASSWORD_SUBMIT)
                 {
-                    uart_instructor_send(UART_READY);
-                    last_ready = now;
+                    receiving_password = true;
+                    received_count = 0;
                 }
-                break;
 
-            case TEST_RUNNING:
-                // Simulate completed puzzles
-                if ((uint32_t)(now - last_success) >=
-                    SUCCESS_INTERVAL_MS)
+                continue;
+            }
+
+            // Receive numeric password digits
+            if (message > 9)
+            {
+                // Invalid payload: reject
+                receiving_password = false;
+                received_count = 0;
+                uart_instructor_send(UART_FAILURE);
+                continue;
+            }
+
+            received_password[received_count] = message;
+            received_count++;
+
+            // Validate after receiving all four digits
+            if (received_count == PASSWORD_LENGTH)
+            {
+                receiving_password = false;
+                received_count = 0;
+
+                if (password_matches(received_password))
                 {
+                    keypad_complete = true;
                     uart_instructor_send(UART_SUCCESS);
-                    success_count++;
-                    last_success = now;
-
-                    if (success_count >= 3) {
-                        state = TEST_COMPLETE;
-                    }
                 }
-                break;
-
-            case TEST_COMPLETE:
-                // All test messages have been sent
-                break;
+                else
+                {
+                    uart_instructor_send(UART_FAILURE);
+                }
+            }
         }
 
         sleep_ms(10);

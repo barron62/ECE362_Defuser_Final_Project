@@ -7,8 +7,8 @@
 
 // UART0 configuration
 #define INSTRUCTOR_UART_BAUD   115200
-#define INSTRUCTOR_UART_TX_PIN 0
-#define INSTRUCTOR_UART_RX_PIN 1
+#define INSTRUCTOR_UART_TX_PIN 36
+#define INSTRUCTOR_UART_RX_PIN 37
 
 // Shared message definitions
 // Must match solver-board UART v2
@@ -17,7 +17,7 @@
 #define UART_READY   0x67
 #define UART_ACK     0x28
 #define UART_GO      0x96
-
+#define UART_PASSWORD_SUBMIT 0xC1
 // Initialize UART communication
 void uart_instructor_init(void);
 

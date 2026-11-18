@@ -4,28 +4,31 @@
 #include "pico/stdlib.h"
 #include "hardware/uart.h"
 
-// RP2350 UART0
-#define SOLVER_UART uart0
+#define UART_PORT uart1
 
 void uart_solver_init(void)
 {
-    uart_init(SOLVER_UART, SOLVER_UART_BAUD);
+    uart_init(UART_PORT, SOLVER_UART_BAUD);
 
     gpio_set_function(SOLVER_UART_TX_PIN, GPIO_FUNC_UART);
     gpio_set_function(SOLVER_UART_RX_PIN, GPIO_FUNC_UART);
+
+    uart_set_format(UART_PORT, 8, 1, UART_PARITY_NONE);
+    uart_set_hw_flow(UART_PORT, false, false);
 }
 
 bool uart_solver_read(uint8_t *message)
 {
-    if (message == NULL || !uart_is_readable(SOLVER_UART)) {
+    if (message == NULL || !uart_is_readable(UART_PORT))
+    {
         return false;
     }
 
-    *message = (uint8_t)uart_getc(SOLVER_UART);
+    *message = (uint8_t)uart_getc(UART_PORT);
     return true;
 }
 
 void uart_solver_send(uint8_t message)
 {
-    uart_putc_raw(SOLVER_UART, message);
+    uart_putc_raw(UART_PORT, message);
 }

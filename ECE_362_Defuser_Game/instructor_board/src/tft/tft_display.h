@@ -24,7 +24,7 @@
 
 void tft_init(void);
 void tft_fill_screen(uint16_t color);
-
+void tft_draw_timer(uint32_t seconds_left);
 // Graphics
 void tft_fill_rect(
     uint16_t x,

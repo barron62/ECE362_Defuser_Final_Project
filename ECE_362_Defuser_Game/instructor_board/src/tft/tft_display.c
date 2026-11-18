@@ -56,6 +56,7 @@
 #define ILI_MADCTL  0x36
 #define ILI_COLMOD  0x3A
 
+
 /*
  * Send a command to the TFT.
  */
@@ -632,5 +633,46 @@ void tft_draw_text_centered(
         text,
         color,
         scale
+    );
+}
+
+
+/*
+ * Draw the remaining time as MM:SS.
+ * Turns red during the final 30 seconds.
+ */
+void tft_draw_timer(uint32_t seconds_left)
+{
+    uint32_t minutes = seconds_left / 60;
+    uint32_t seconds = seconds_left % 60;
+
+    uint16_t color = seconds_left <= 30
+        ? TFT_RED : TFT_CYAN;
+
+    // Clear previous timer display
+    tft_fill_rect(20, 132, 200, 22, TFT_PANEL);
+
+    tft_draw_text(
+        44, 135, "TIME", TFT_LIGHT_GRAY, 2
+    );
+
+    tft_draw_char(
+        114, 135, '0' + minutes / 10, color, 2
+    );
+
+    tft_draw_char(
+        126, 135, '0' + minutes % 10, color, 2
+    );
+
+    // Draw colon
+    tft_fill_rect(142, 140, 3, 3, color);
+    tft_fill_rect(142, 148, 3, 3, color);
+
+    tft_draw_char(
+        154, 135, '0' + seconds / 10, color, 2
+    );
+
+    tft_draw_char(
+        166, 135, '0' + seconds % 10, color, 2
     );
 }

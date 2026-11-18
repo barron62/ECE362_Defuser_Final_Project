@@ -28,7 +28,7 @@
 
 #include "uart/uart_instructor_v2.h"
 #include "tft/tft_display.h"
-
+#include "timer/game_timer.h"
 #define PASSWORD_LENGTH 4
 #define READY_INTERVAL_MS 500
 
@@ -277,7 +277,7 @@ int main(void)
     // Initialize hardware
     uart_instructor_init();
     tft_init();
-
+    game_timer_init();
     // Generate password once per game
     generate_password();
 
@@ -289,7 +289,9 @@ int main(void)
 
     // Start keypad puzzle
     uart_instructor_send(UART_GO);
-
+    // Begin the three-minute countdown
+    game_timer_start();
+    uint32_t last_displayed_time = UINT32_MAX;
     // UART password receive buffer
     uint8_t received_password[PASSWORD_LENGTH];
     uint8_t received_count = 0;
@@ -304,8 +306,38 @@ int main(void)
 
     uint8_t sequence_index = 0;
     bool expecting_movement = false;
+    
     while (true)
     {
+
+        uint32_t seconds_left = game_timer_remaining_seconds();
+
+        // Update display once per second
+        if (!game_over &&
+            seconds_left != last_displayed_time)
+        {
+            tft_draw_timer(seconds_left);
+            last_displayed_time = seconds_left;
+        }
+
+        // Check for timeout
+        if (!game_over && game_timer_expired())
+        {
+            game_over = true;
+
+            uart_instructor_send(UART_GAME_OVER);
+
+            tft_fill_screen(TFT_BACKGROUND);
+
+            tft_draw_text_centered(
+                110, "TIME EXPIRED", TFT_RED, 2
+            );
+
+            tft_draw_text_centered(
+                175, "GAME OVER", TFT_WHITE, 2
+            );
+        }
+
         uint8_t message;
 
         while (uart_instructor_read(&message))
@@ -478,6 +510,9 @@ int main(void)
 
                 // Preserve strikes from password puzzle
                 draw_strikes(strikes);
+
+                // Force timer to redraw on new screen
+                last_displayed_time = UINT32_MAX;
             }
             else
             {

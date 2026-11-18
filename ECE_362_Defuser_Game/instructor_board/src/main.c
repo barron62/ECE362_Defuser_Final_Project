@@ -28,7 +28,8 @@
 #include "timer/game_timer.h"
 #include "game_screens/game_screens.h"
 #include "password/password.h"
-
+#include "maze/maze.h"
+#include "game/game_controller.h"
 #define READY_INTERVAL_MS 500
 
 
@@ -77,7 +78,8 @@ int main(void)
     game_timer_init();
     // Generate random password
     password_init();
-
+    maze_init();
+    game_init();
     // Display password on instructor TFT
     game_screen_password(password_get_code());
 
@@ -95,53 +97,42 @@ int main(void)
 
     bool receiving_password = false;
     bool keypad_complete = false;
-    uint8_t strikes = 0;
-    bool game_over = false;
-    
-    // Temporary directional sequence test
-    const uint8_t test_sequence[4] = {0, 3, 1, 2};
-
-    uint8_t sequence_index = 0;
     bool expecting_movement = false;
     
     while (true)
     {
-
         uint32_t seconds_left = game_timer_remaining_seconds();
 
-        // Update display once per second
-        if (!game_over &&
+        // Check for timeout first
+        if (!game_is_over() && game_timer_expired())
+        {
+            game_time_expired();
+        }
+
+        // Update TFT timer once per second
+        if (!game_is_over() &&
             seconds_left != last_displayed_time)
         {
             tft_draw_timer(seconds_left);
             last_displayed_time = seconds_left;
         }
 
-        // Check for timeout
-        if (!game_over && game_timer_expired())
-        {
-            game_over = true;
-
-            uart_instructor_send(UART_GAME_OVER);
-
-            game_screen_time_expired();
-        }
 
         uint8_t message;
 
         while (uart_instructor_read(&message))
         {
             
-            if (game_over)
+            if (game_is_over())
             {
                 // Ignore incoming messages after game over
                 continue;
             }
 
             // Password completed: process maze button inputs
+            
             if (keypad_complete)
             {
-                // First byte identifies a movement packet
                 if (!expecting_movement)
                 {
                     if (message == UART_MAZE_MOVE)
@@ -151,56 +142,27 @@ int main(void)
                 }
                 else
                 {
-                    // Second byte specifies the direction
                     expecting_movement = false;
 
-                    if (message <= 3)
+                    maze_result_t result =
+                        maze_process_direction(message);
+                    
+                    if (result == MAZE_COMPLETE)
                     {
-                        if (message == test_sequence[sequence_index])
-                        {
-                            // Correct next direction
-                            sequence_index++;
-
-                            if (sequence_index == 4)
-                            {
-                                // All directions entered correctly
-                                uart_instructor_send(UART_SUCCESS);
-
-                                game_screen_victory();
-
-                                game_over = true;
-                            }
-                        }
-                        else
-                        {
-                            // Incorrect direction
-                            sequence_index = 0;
-                            strikes++;
-
-                            // Update strike counter on TFT
-                            game_screen_strikes(strikes);
-
-                            if (strikes >= 3)
-                            {
-                                // Three strikes: game over
-                                game_over = true;
-
-                                uart_instructor_send(UART_GAME_OVER);
-
-                                game_screen_game_over();
-                            }
-                            else
-                            {
-                                // Allow another attempt
-                                uart_instructor_send(UART_FAILURE);
-                            }
-                        }
+                        // Maze completed successfully
+                        game_win();
                     }
+                    else if (result == MAZE_INCORRECT)
+                    {
+                        // Incorrect movement adds a strike
+                        game_register_strike();
+                    }
+
                 }
 
-                // Don't process maze bytes as password bytes
                 continue;
             }
+
 
 
             // Wait for packet start
@@ -226,26 +188,7 @@ int main(void)
                 receiving_password = false;
                 received_count = 0;
 
-                // Add a strike
-                strikes++;
-
-                // Update the TFT strike counter
-                game_screen_strikes(strikes);
-
-                if (strikes >= 3)
-                {
-                    // Three strikes: game over
-                    game_over = true;
-
-                    uart_instructor_send(UART_GAME_OVER);
-
-                    game_screen_game_over();
-                }
-                else
-                {
-                    // Reject answer and allow another attempt
-                    uart_instructor_send(UART_FAILURE);
-                }
+                game_register_strike();
 
                 continue;
             }
@@ -273,32 +216,14 @@ int main(void)
                     game_screen_maze();
 
                     // Preserve strikes from password puzzle
-                    game_screen_strikes(strikes);
+                    game_screen_strikes(game_get_strikes());
 
                     // Force timer to redraw on new screen
                     last_displayed_time = UINT32_MAX;
                 }
                 else
                 {
-                    // Incorrect password
-                    strikes++;
-
-                    // Update the TFT strike counter
-                    game_screen_strikes(strikes);
-                    if (strikes >= 3)
-                    {
-                        // Three strikes: game over
-                        game_over = true;
-
-                        uart_instructor_send(UART_GAME_OVER);
-
-                        game_screen_game_over();
-                    }
-                    else
-                    {
-                        // Allow another attempt
-                        uart_instructor_send(UART_FAILURE);
-                    }
+                    game_register_strike();
                 }
 
             }

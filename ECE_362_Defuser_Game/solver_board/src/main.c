@@ -122,38 +122,57 @@ static void process_keypad(void)
     }
 }
 
+
 /*
- * Read directional buttons.
- * Communication will be added for the button
- * and maze puzzles.
+ * Read directional buttons and transmit
+ * movements to the instructor over UART1.
+ *
+ * Movement values:
+ * 0 = UP
+ * 1 = DOWN
+ * 2 = LEFT
+ * 3 = RIGHT
  */
 static void process_buttons(void)
 {
     direction_t direction = buttons_get_press();
 
+    // Only process movements during maze puzzle
+    if (game_get_state() != GAME_MAZE)
+    {
+        return;
+    }
+
+    uint8_t movement;
+
     switch (direction)
     {
         case DIR_UP:
-            // TODO: Send UP movement
+            movement = 0;
             break;
 
         case DIR_DOWN:
-            // TODO: Send DOWN movement
+            movement = 1;
             break;
 
         case DIR_LEFT:
-            // TODO: Send LEFT movement
+            movement = 2;
             break;
 
         case DIR_RIGHT:
-            // TODO: Send RIGHT movement
+            movement = 3;
             break;
 
         case DIR_NONE:
         default:
-            break;
+            return;
     }
+
+    // Send movement command followed by direction
+    uart_solver_send(UART_MAZE_MOVE);
+    uart_solver_send(movement);
 }
+
 
 /*
  * Trigger LED animations based on game events.

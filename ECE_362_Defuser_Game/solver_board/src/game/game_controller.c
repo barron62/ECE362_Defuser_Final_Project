@@ -74,6 +74,11 @@ bool game_send_answer(const uint8_t *data, uint8_t length)
  */
 void game_process_message(uint8_t message)
 {
+    // Ignore further commands after game over
+    if (state == GAME_LOST || state == GAME_WON)
+    {
+        return;
+    }
     switch (message)
     {
         case UART_READY:
@@ -88,26 +93,24 @@ void game_process_message(uint8_t message)
             pending_event = GAME_EVENT_STARTED;
             break;
 
+        
         case UART_SUCCESS:
             if (state == GAME_KEYPAD && answer_pending)
             {
-                state = GAME_BUTTON;
-                pending_event = GAME_EVENT_PUZZLE_COMPLETE;
-                answer_pending = false;
-            }
-            else if (state == GAME_BUTTON)
-            {
+                // Password correct: advance to maze
                 state = GAME_MAZE;
                 pending_event = GAME_EVENT_PUZZLE_COMPLETE;
                 answer_pending = false;
             }
             else if (state == GAME_MAZE)
             {
+                // Maze completed: victory
                 state = GAME_WON;
                 pending_event = GAME_EVENT_WON;
                 answer_pending = false;
             }
             break;
+
 
         case UART_FAILURE:
             if (state == GAME_KEYPAD && answer_pending)
@@ -115,12 +118,18 @@ void game_process_message(uint8_t message)
                 answer_pending = false;
                 pending_event = GAME_EVENT_ANSWER_REJECTED;
             }
-            else if (state == GAME_BUTTON ||
-                     state == GAME_MAZE)
+            else if (state == GAME_MAZE)
             {
                 answer_pending = false;
                 pending_event = GAME_EVENT_ANSWER_REJECTED;
             }
+            break;
+        
+        case UART_GAME_OVER:
+            // Instructor ended the game
+            state = GAME_LOST;
+            answer_pending = false;
+            pending_event = GAME_EVENT_LOST;
             break;
 
         default:

@@ -17,6 +17,8 @@
 #define UART_ACK     0x28
 #define UART_GO      0x96
 #define UART_PASSWORD_SUBMIT 0xC1
+#define UART_GAME_OVER 0xD0
+#define UART_MAZE_MOVE 0xC2
 // Initialize solver UART
 void uart_solver_init(void);
 

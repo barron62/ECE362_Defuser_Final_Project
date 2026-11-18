@@ -665,8 +665,8 @@ void tft_draw_timer(uint32_t seconds_left)
     );
 
     // Draw colon
-    tft_fill_rect(142, 140, 3, 3, color);
-    tft_fill_rect(142, 148, 3, 3, color);
+    tft_fill_rect(142, 137, 3, 3, color);
+    tft_fill_rect(142, 145, 3, 3, color);
 
     tft_draw_char(
         154, 135, '0' + seconds / 10, color, 2

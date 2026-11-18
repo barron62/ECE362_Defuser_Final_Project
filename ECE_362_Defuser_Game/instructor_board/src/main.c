@@ -1,7 +1,6 @@
-
 /*
  * ECE 362 - Defuser Game
- * Instructor Board - Random Password Puzzle
+ * Instructor Board - Main Game Controller
  *
  * Hardware:
  * - RP2350 Proton
@@ -9,169 +8,29 @@
  * - SPI0 TFT display
  *
  * Game behavior:
- * 1. Generate a random four-digit password
- * 2. Display it on the instructor TFT
- * 3. Establish UART handshake with solver
- * 4. Start the keypad puzzle
- * 5. Receive password over UART
- * 6. Compare against generated password
- * 7. Send SUCCESS or FAILURE
+ * - Generate and validate random password
+ * - Communicate with solver through UART
+ * - Track three strikes across both puzzles
+ * - Run shared three-minute countdown
+ * - Process directional maze inputs
+ * - Handle victory and game-over conditions
  *
- * Correct password changes every startup.
+ * Current maze uses a temporary direction sequence.
  */
 
 #include <stdint.h>
 #include <stdbool.h>
 
 #include "pico/stdlib.h"
-#include "pico/rand.h"
 
 #include "uart/uart_instructor_v2.h"
 #include "tft/tft_display.h"
 #include "timer/game_timer.h"
-#define PASSWORD_LENGTH 4
+#include "game_screens/game_screens.h"
+#include "password/password.h"
+
 #define READY_INTERVAL_MS 500
 
-// The generated password is stored here
-static uint8_t correct_password[PASSWORD_LENGTH];
-
-/*
- * Generate a new four-digit password.
- * Digits may include zero.
- */
-static void generate_password(void)
-{
-    for (uint8_t i = 0; i < PASSWORD_LENGTH; i++)
-    {
-        correct_password[i] =
-            (uint8_t)(get_rand_32() % 10);
-    }
-}
-
-/*
- * Draw one password box and its digit.
- */
-static void draw_password_box(
-    uint16_t x,
-    uint8_t digit)
-{
-    const uint16_t y = 199;
-    const uint16_t width = 38;
-    const uint16_t height = 50;
-
-    tft_fill_rect(
-        x, y, width, height,
-        TFT_BACKGROUND
-    );
-
-    tft_draw_rect(
-        x, y, width, height,
-        TFT_BORDER
-    );
-
-    // Draw the actual password digit
-    tft_draw_char(
-        x + 12,
-        y + 15,
-        (char)('0' + digit),
-        TFT_WHITE,
-        3
-    );
-}
-
-
-/*
- * Display the current strikes on the TFT.
- * Shows: STRIKES 0 OF 3, 1 OF 3, etc.
- */
-static void draw_strikes(uint8_t strikes)
-{
-    // Clear the previous strike display
-    tft_fill_rect(
-        20, 260, 200, 35,
-        TFT_PANEL
-    );
-
-    tft_draw_text(
-        30, 270,
-        "STRIKES",
-        TFT_LIGHT_GRAY,
-        2
-    );
-
-    tft_draw_char(
-        126, 270,
-        (char)('0' + strikes),
-        strikes > 0 ? TFT_RED : TFT_GREEN,
-        2
-    );
-
-    tft_draw_text(
-        144, 270,
-        "OF 3",
-        TFT_LIGHT_GRAY,
-        2
-    );
-}
-
-
-/*
- * Display the generated password
- * on the instructor TFT.
- */
-static void draw_password_screen(void)
-{
-    tft_fill_screen(TFT_BACKGROUND);
-
-    // Main panel
-    tft_fill_rect(
-        8, 12, 224, 296,
-        TFT_PANEL
-    );
-
-    tft_draw_rect(
-        8, 12, 224, 296,
-        TFT_BORDER
-    );
-
-    // Game title
-    tft_draw_text_centered(
-        43,
-        "DEFUSER GAME",
-        TFT_CYAN,
-        2
-    );
-
-    // Divider
-    tft_fill_rect(
-        24, 79, 192, 2,
-        TFT_BORDER
-    );
-
-    // Puzzle title
-    tft_draw_text_centered(
-        101,
-        "PUZZLE 1",
-        TFT_WHITE,
-        3
-    );
-
-    // Instructions
-    tft_draw_text_centered(
-        157,
-        "PASSWORD CODE",
-        TFT_WHITE,
-        2
-    );
-
-    // Display the four generated digits
-    draw_password_box(26, correct_password[0]);
-    draw_password_box(76, correct_password[1]);
-    draw_password_box(126, correct_password[2]);
-    draw_password_box(176, correct_password[3]);
-
-    draw_strikes(0);
-}
 
 /*
  * Wait for the solver to acknowledge READY.
@@ -206,68 +65,6 @@ static void wait_for_solver(void)
     }
 }
 
-/*
- * Compare a submitted password against
- * the generated password.
- */
-static bool password_matches(
-    const uint8_t *answer)
-{
-    for (uint8_t i = 0; i < PASSWORD_LENGTH; i++)
-    {
-        if (answer[i] != correct_password[i])
-        {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-/*
- * Display maze puzzle instructions.
- */
-static void draw_maze_screen(void)
-{
-    tft_fill_screen(TFT_BACKGROUND);
-
-    tft_fill_rect(
-        8, 12, 224, 296,
-        TFT_PANEL
-    );
-
-    tft_draw_rect(
-        8, 12, 224, 296,
-        TFT_BORDER
-    );
-
-    tft_draw_text_centered(
-        43, "DEFUSER GAME", TFT_CYAN, 2
-    );
-
-    tft_fill_rect(
-        24, 79, 192, 2,
-        TFT_BORDER
-    );
-
-    tft_draw_text_centered(
-        101, "PUZZLE 2", TFT_WHITE, 3
-    );
-
-    tft_draw_text_centered(
-        157, "MAZE PUZZLE", TFT_WHITE, 2
-    );
-
-    tft_draw_text_centered(
-        206, "GUIDE THE SOLVER",
-        TFT_LIGHT_GRAY, 2
-    );
-
-    tft_draw_text_centered(
-        225, "USE ARROW KEYS",
-        TFT_CYAN, 2
-    );
-}
 
 /*
  * Main instructor program.
@@ -278,11 +75,11 @@ int main(void)
     uart_instructor_init();
     tft_init();
     game_timer_init();
-    // Generate password once per game
-    generate_password();
+    // Generate random password
+    password_init();
 
-    // Display password on TFT
-    draw_password_screen();
+    // Display password on instructor TFT
+    game_screen_password(password_get_code());
 
     // Wait for solver to connect
     wait_for_solver();
@@ -327,15 +124,7 @@ int main(void)
 
             uart_instructor_send(UART_GAME_OVER);
 
-            tft_fill_screen(TFT_BACKGROUND);
-
-            tft_draw_text_centered(
-                110, "TIME EXPIRED", TFT_RED, 2
-            );
-
-            tft_draw_text_centered(
-                175, "GAME OVER", TFT_WHITE, 2
-            );
+            game_screen_time_expired();
         }
 
         uint8_t message;
@@ -377,14 +166,7 @@ int main(void)
                                 // All directions entered correctly
                                 uart_instructor_send(UART_SUCCESS);
 
-                                tft_fill_screen(TFT_BACKGROUND);
-
-                                tft_draw_text_centered(
-                                    120,
-                                    "BOMB DEFUSED",
-                                    TFT_GREEN,
-                                    2
-                                );
+                                game_screen_victory();
 
                                 game_over = true;
                             }
@@ -396,7 +178,7 @@ int main(void)
                             strikes++;
 
                             // Update strike counter on TFT
-                            draw_strikes(strikes);
+                            game_screen_strikes(strikes);
 
                             if (strikes >= 3)
                             {
@@ -405,15 +187,7 @@ int main(void)
 
                                 uart_instructor_send(UART_GAME_OVER);
 
-                                tft_fill_screen(TFT_BACKGROUND);
-
-                                tft_draw_text_centered(
-                                    110, "GAME OVER", TFT_RED, 3
-                                );
-
-                                tft_draw_text_centered(
-                                    175, "THREE STRIKES", TFT_WHITE, 2
-                                );
+                                game_screen_game_over();
                             }
                             else
                             {
@@ -456,7 +230,7 @@ int main(void)
                 strikes++;
 
                 // Update the TFT strike counter
-                draw_strikes(strikes);
+                game_screen_strikes(strikes);
 
                 if (strikes >= 3)
                 {
@@ -465,17 +239,7 @@ int main(void)
 
                     uart_instructor_send(UART_GAME_OVER);
 
-                    // Display game-over screen
-                    tft_fill_screen(TFT_BACKGROUND);
-
-                    tft_draw_text_centered(
-                        110, "GAME OVER", TFT_RED, 3
-                    );
-
-                    tft_draw_text_centered(
-                        175, "THREE STRIKES",
-                        TFT_WHITE, 2
-                    );
+                    game_screen_game_over();
                 }
                 else
                 {
@@ -498,53 +262,44 @@ int main(void)
                 received_count = 0;
 
                 
-            if (password_matches(received_password))
-            {
-                // Correct password
-                keypad_complete = true;
-
-                uart_instructor_send(UART_SUCCESS);
-
-                // Advance to maze
-                draw_maze_screen();
-
-                // Preserve strikes from password puzzle
-                draw_strikes(strikes);
-
-                // Force timer to redraw on new screen
-                last_displayed_time = UINT32_MAX;
-            }
-            else
-            {
-                // Incorrect password
-                strikes++;
-
-                // Update the TFT strike counter
-                draw_strikes(strikes);
-                if (strikes >= 3)
+                if (password_matches(received_password))
                 {
-                    // Three strikes: game over
-                    game_over = true;
+                    // Correct password
+                    keypad_complete = true;
 
-                    uart_instructor_send(UART_GAME_OVER);
+                    uart_instructor_send(UART_SUCCESS);
 
-                    // Display defeat on TFT
-                    tft_fill_screen(TFT_BACKGROUND);
+                    // Advance to maze
+                    game_screen_maze();
 
-                    tft_draw_text_centered(
-                        110, "GAME OVER", TFT_RED, 3
-                    );
+                    // Preserve strikes from password puzzle
+                    game_screen_strikes(strikes);
 
-                    tft_draw_text_centered(
-                        175, "THREE STRIKES", TFT_WHITE, 2
-                    );
+                    // Force timer to redraw on new screen
+                    last_displayed_time = UINT32_MAX;
                 }
                 else
                 {
-                    // Allow another attempt
-                    uart_instructor_send(UART_FAILURE);
+                    // Incorrect password
+                    strikes++;
+
+                    // Update the TFT strike counter
+                    game_screen_strikes(strikes);
+                    if (strikes >= 3)
+                    {
+                        // Three strikes: game over
+                        game_over = true;
+
+                        uart_instructor_send(UART_GAME_OVER);
+
+                        game_screen_game_over();
+                    }
+                    else
+                    {
+                        // Allow another attempt
+                        uart_instructor_send(UART_FAILURE);
+                    }
                 }
-            }
 
             }
         }

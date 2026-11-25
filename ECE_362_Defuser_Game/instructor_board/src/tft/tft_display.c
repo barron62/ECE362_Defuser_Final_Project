@@ -646,14 +646,13 @@ void tft_draw_timer(uint32_t seconds_left)
     uint32_t minutes = seconds_left / 60;
     uint32_t seconds = seconds_left % 60;
 
-    uint16_t color = seconds_left <= 30
-        ? TFT_RED : TFT_CYAN;
+   uint16_t color = seconds_left <= 30
+    ? TFT_RED : TFT_CYAN;
 
     // Clear previous timer display
     tft_fill_rect(20, 132, 200, 22, TFT_PANEL);
 
-    tft_draw_text(
-        44, 135, "TIME", TFT_LIGHT_GRAY, 2
+    tft_draw_text(44, 135, "TIME", TFT_LIGHT_GRAY, 2
     );
 
     tft_draw_char(

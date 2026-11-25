@@ -5,81 +5,88 @@
  *
  * Hardware:
  * - RP2350 Proton
- * - 64x32 HUB75 RGB LED matrix
- * - 1/16 scan, four row address signals
- * - GPIO-driven refresh (no PIO)
+ * - 64x32 RGB HUB75 LED matrix
+ * - 1/16 scan, GPIO-driven
  *
- * Display:
- * - Randomly generated maze
+ * Core 0:
+ * - Builds maze frames
+ * - Updates player position
+ * - Requests framebuffer swaps
+ *
+ * Core 1:
+ * - Continuously refreshes HUB75
+ * - Uses proven direct-GPIO timing
+ * - Displays each row for 200 us
+ *
+ * Colors:
  * - Blue walls
  * - Black paths
  * - Green start
  * - Red goal
  * - Yellow player
  *
- * Uses 1-bit RGB color (8 possible colors).
+ * Green/blue GPIO mapping corrected for
+ * observed panel wiring.
  */
 
 #include "hub75.h"
 #include "maze/maze.h"
 
+#include <stdint.h>
+#include <stdbool.h>
 #include <string.h>
 
 #include "pico/stdlib.h"
-#include "pico/time.h"
-#include "hardware/gpio.h"
-#include "hardware/sync.h"
+#include "pico/multicore.h"
 
-// HUB75 GPIO assignments
-#define PIN_R1   0
-#define PIN_G1   1
-#define PIN_B1   2
+// Current working GPIO assignments
+#define PIN_R1   27
+#define PIN_G1   28
+#define PIN_B1   29
 
-#define PIN_R2   3
-#define PIN_G2   4
-#define PIN_B2   5
+#define PIN_R2   30
+#define PIN_G2   31
+#define PIN_B2   32
 
-#define PIN_A    6
-#define PIN_B    7
-#define PIN_C    8
-#define PIN_D    9
+#define PIN_A    33
+#define PIN_B    34
+#define PIN_C    35
+#define PIN_D    38
 
-#define PIN_CLK  10
-#define PIN_LAT  11
-#define PIN_OE   12
+#define PIN_CLK  39
+#define PIN_LAT  13
+#define PIN_OE   20
 
-// 1/16 scan: 16 row pairs per frame
 #define HUB75_SCAN_ROWS 16
+#define ROW_ON_TIME_US 200
 
-// 400 microseconds per row pair (~156 Hz/frame)
-#define ROW_INTERVAL_US 400
-
-#define DATA_MASK 0x3Fu
-#define ADDR_MASK (0xFu << PIN_A)
-
-// 1-bit RGB color values
+// 1-bit RGB logical colors
 #define COLOR_BLACK   0x00
 #define COLOR_RED     0x01
 #define COLOR_GREEN   0x02
 #define COLOR_BLUE    0x04
 #define COLOR_YELLOW  0x03
 
-// Two independent framebuffers
+// 255 means no framebuffer swap requested
+#define NO_SWAP 255
+
+// Two framebuffers
 static uint8_t framebuffer[2]
     [HUB75_HEIGHT][HUB75_WIDTH];
 
-// Buffer currently being displayed
+// Shared between both cores
 static volatile uint8_t front_buffer = 0;
+static volatile uint8_t pending_buffer = NO_SWAP;
 
-// Buffer being prepared by main program
+// Written by Core 0 only
 static uint8_t back_buffer = 1;
 
-static repeating_timer_t refresh_timer;
-static uint8_t scan_row = 0;
 static bool initialized = false;
 
+
 /*
- * Write one pixel into the back framebuffer.
+ * Set one pixel in the back framebuffer.
+ * Called only from Core 0.
  */
 static void set_pixel(
     uint8_t x,
@@ -92,93 +99,175 @@ static void set_pixel(
         return;
     }
 
-    framebuffer[back_buffer][y][x] = color;
+    framebuffer[back_buffer][y][x] =
+        color & 0x07u;
 }
 
+
 /*
- * Swap framebuffers atomically.
+ * Publish completed frame to Core 1.
  *
- * The timer interrupt always reads the
- * front buffer. Main writes to the back.
+ * Core 1 swaps buffers at the beginning
+ * of a new matrix frame.
+ *
+ * Core 0 waits until the swap completes
+ * before reusing the old front buffer.
  */
 static void show_frame(void)
 {
-    uint32_t irq_state = save_and_disable_interrupts();
+    if (!initialized)
+    {
+        return;
+    }
 
     uint8_t old_front = front_buffer;
-    front_buffer = back_buffer;
-    back_buffer = old_front;
 
-    restore_interrupts(irq_state);
+    // Ensure framebuffer writes are visible
+    __sync_synchronize();
+
+    // Request display of completed frame
+    pending_buffer = back_buffer;
+
+    // Wait for Core 1 to accept new frame
+    while (pending_buffer != NO_SWAP)
+    {
+        tight_loop_contents();
+    }
+
+    __sync_synchronize();
+
+    // Old front is now safe to modify
+    back_buffer = old_front;
 }
 
+
 /*
- * Scan one pair of HUB75 rows.
- *
- * This runs from the repeating-timer
- * interrupt. Keep it short and avoid
- * TFT, UART, or blocking delays here.
+ * Select one of the 16 row pairs.
  */
-static bool refresh_callback(repeating_timer_t *timer)
+static void select_row(uint8_t row)
 {
-    (void)timer;
+    gpio_put(PIN_A, (row >> 0) & 1);
+    gpio_put(PIN_B, (row >> 1) & 1);
+    gpio_put(PIN_C, (row >> 2) & 1);
+    gpio_put(PIN_D, (row >> 3) & 1);
+}
 
-    uint8_t row = scan_row;
-    uint8_t active = front_buffer;
 
-    // Blank output while shifting data
+/*
+ * Output color data for both halves.
+ *
+ * Green/blue are swapped to match
+ * the physical wiring discovered
+ * during standalone color testing.
+ */
+static void output_rgb(
+    uint8_t top,
+    uint8_t bottom)
+{
+    gpio_put(PIN_R1, (top >> 0) & 1);
+    gpio_put(PIN_G1, (top >> 2) & 1);
+    gpio_put(PIN_B1, (top >> 1) & 1);
+
+    gpio_put(PIN_R2, (bottom >> 0) & 1);
+    gpio_put(PIN_G2, (bottom >> 2) & 1);
+    gpio_put(PIN_B2, (bottom >> 1) & 1);
+}
+
+
+/*
+ * Scan a single row pair.
+ *
+ * Matches successful direct GPIO test:
+ * - Disable output
+ * - Shift RGB data
+ * - Latch data
+ * - Select row
+ * - Enable for 200 us
+ * - Disable before advancing
+ */
+static void display_row(
+    uint8_t row,
+    uint8_t active)
+{
     gpio_put(PIN_OE, 1);
 
-    // Select row address A-D
-    gpio_put_masked(
-        ADDR_MASK,
-        ((uint32_t)row << PIN_A)
-    );
-
-    // Shift 64 column pairs
+    // Shift all 64 columns
     for (uint8_t x = 0; x < HUB75_WIDTH; x++)
     {
-        // Upper half: row 0-15
         uint8_t top =
             framebuffer[active][row][x];
 
-        // Lower half: row 16-31
         uint8_t bottom =
             framebuffer[active][row + 16][x];
 
-        // Data pins GP0-GP5 correspond to
-        // R1,G1,B1,R2,G2,B2.
-        uint32_t bits =
-            (uint32_t)(top & 0x07u) |
-            ((uint32_t)(bottom & 0x07u) << 3);
+        output_rgb(top, bottom);
 
-        gpio_put_masked(DATA_MASK, bits);
+        gpio_put(PIN_CLK, 0);
+        sleep_us(1);
 
-        // Clock one column into panel
         gpio_put(PIN_CLK, 1);
+        sleep_us(1);
+
         gpio_put(PIN_CLK, 0);
     }
 
-    // Latch shifted pixel data
+    // Latch row data
     gpio_put(PIN_LAT, 1);
+    sleep_us(1);
     gpio_put(PIN_LAT, 0);
 
-    // Enable visible output (active low)
+    // Select row pair
+    select_row(row);
+    sleep_us(1);
+
+    // Illuminate row
     gpio_put(PIN_OE, 0);
+    sleep_us(ROW_ON_TIME_US);
 
-    // Advance to next row pair
-    scan_row++;
-
-    if (scan_row >= HUB75_SCAN_ROWS)
-    {
-        scan_row = 0;
-    }
-
-    return true;
+    // Blank before next row
+    gpio_put(PIN_OE, 1);
 }
 
+
 /*
- * Initialize HUB75 GPIO and refresh timer.
+ * Core 1 entry point.
+ *
+ * Runs forever, independently of Core 0.
+ * Displays entire matrix continuously.
+ */
+static void hub75_core1_main(void)
+{
+    while (true)
+    {
+        // Accept completed frames only
+        // at frame boundaries.
+        uint8_t requested = pending_buffer;
+
+        if (requested != NO_SWAP)
+        {
+            __sync_synchronize();
+            front_buffer = requested;
+            __sync_synchronize();
+            pending_buffer = NO_SWAP;
+        }
+
+        uint8_t active = front_buffer;
+
+        // Refresh all 16 row pairs
+        for (uint8_t row = 0;
+             row < HUB75_SCAN_ROWS;
+             row++)
+        {
+            display_row(row, active);
+        }
+    }
+}
+
+
+/*
+ * Initialize HUB75 and launch Core 1.
+ *
+ * Call once from the instructor main().
  */
 bool hub75_init(void)
 {
@@ -187,56 +276,66 @@ bool hub75_init(void)
         return true;
     }
 
-    // Initialize all HUB75 control/data pins
-    for (uint8_t pin = PIN_R1; pin <= PIN_OE; pin++)
+    const uint8_t pins[] =
     {
-        gpio_init(pin);
-        gpio_set_dir(pin, GPIO_OUT);
-        gpio_put(pin, 0);
+        PIN_R1, PIN_G1, PIN_B1,
+        PIN_R2, PIN_G2, PIN_B2,
+        PIN_A, PIN_B, PIN_C, PIN_D,
+        PIN_CLK, PIN_LAT, PIN_OE
+    };
+
+    for (uint8_t i = 0;
+         i < sizeof(pins) / sizeof(pins[0]);
+         i++)
+    {
+        gpio_init(pins[i]);
+        gpio_set_dir(pins[i], GPIO_OUT);
+        gpio_put(pins[i], 0);
     }
 
-    // Disable panel output initially
+    // Start with LEDs disabled
     gpio_put(PIN_OE, 1);
 
     memset(framebuffer, 0, sizeof(framebuffer));
 
     front_buffer = 0;
     back_buffer = 1;
-    scan_row = 0;
-
-    // Negative interval uses completion-based
-    // scheduling with Pico repeating timers.
-    if (!add_repeating_timer_us(
-            -ROW_INTERVAL_US,
-            refresh_callback,
-            NULL,
-            &refresh_timer))
-    {
-        return false;
-    }
+    pending_buffer = NO_SWAP;
 
     initialized = true;
+
+    // Launch continuous display scanning
+    // on the second RP2350 processor core.
+    multicore_launch_core1(hub75_core1_main);
+
     return true;
 }
 
+
 /*
  * Draw a 2x2 pixel maze tile.
+ *
+ * 21x11 tiles -> 42x22 pixels.
+ * Centered on the 64x32 matrix.
  */
 static void draw_tile(
     uint8_t tile_x,
     uint8_t tile_y,
     uint8_t color)
 {
-    // Center 42x22 maze on 64x32 panel
     uint8_t start_x =
         11 + tile_x * MAZE_TILE_SIZE;
 
     uint8_t start_y =
         5 + tile_y * MAZE_TILE_SIZE;
 
-    for (uint8_t dy = 0; dy < MAZE_TILE_SIZE; dy++)
+    for (uint8_t dy = 0;
+         dy < MAZE_TILE_SIZE;
+         dy++)
     {
-        for (uint8_t dx = 0; dx < MAZE_TILE_SIZE; dx++)
+        for (uint8_t dx = 0;
+             dx < MAZE_TILE_SIZE;
+             dx++)
         {
             set_pixel(
                 start_x + dx,
@@ -247,15 +346,21 @@ static void draw_tile(
     }
 }
 
+
 /*
- * Render current maze state.
+ * Draw the current randomized maze.
  *
- * Reads maze data from maze.c.
- * Does not generate a new maze.
+ * Called after password completion
+ * and after valid player movement.
  */
 void hub75_draw_maze(void)
 {
-    // Clear back buffer
+    if (!initialized)
+    {
+        return;
+    }
+
+    // Clear back framebuffer
     memset(
         framebuffer[back_buffer],
         0,
@@ -266,7 +371,8 @@ void hub75_draw_maze(void)
     {
         for (uint8_t x = 0; x < MAZE_WIDTH; x++)
         {
-            maze_tile_t tile = maze_get_tile(x, y);
+            maze_tile_t tile =
+                maze_get_tile(x, y);
 
             uint8_t color = COLOR_BLACK;
 
@@ -274,6 +380,10 @@ void hub75_draw_maze(void)
             {
                 case MAZE_WALL:
                     color = COLOR_BLUE;
+                    break;
+
+                case MAZE_PATH:
+                    color = COLOR_BLACK;
                     break;
 
                 case MAZE_START:
@@ -288,7 +398,6 @@ void hub75_draw_maze(void)
                     color = COLOR_YELLOW;
                     break;
 
-                case MAZE_PATH:
                 default:
                     color = COLOR_BLACK;
                     break;
@@ -298,20 +407,57 @@ void hub75_draw_maze(void)
         }
     }
 
-    // Show completed image
     show_frame();
 }
 
+
 /*
- * Clear the matrix display.
+ * Clear the complete matrix.
  */
 void hub75_clear(void)
 {
+    if (!initialized)
+    {
+        return;
+    }
+
     memset(
         framebuffer[back_buffer],
         0,
         sizeof(framebuffer[back_buffer])
     );
+
+    show_frame();
+}
+
+
+/*
+ * Full-panel diagnostic color fill.
+ *
+ * 0 = OFF
+ * 1 = RED
+ * 2 = GREEN
+ * 4 = BLUE
+ * 7 = WHITE
+ */
+void hub75_test_fill(uint8_t color)
+{
+    if (!initialized)
+    {
+        return;
+    }
+
+    for (uint8_t y = 0;
+         y < HUB75_HEIGHT;
+         y++)
+    {
+        for (uint8_t x = 0;
+             x < HUB75_WIDTH;
+             x++)
+        {
+            set_pixel(x, y, color);
+        }
+    }
 
     show_frame();
 }
